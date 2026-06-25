@@ -5,6 +5,9 @@
   --color-primary: #252B42;
   --color-secondary: #23A6F0;
   --color-gray-light: #737373;
+  --color-text-gray: #FAFAFA;
+  --color-button: #2DC071;
+  --color-green-background: #23856D;
 }
 
 @layer base {

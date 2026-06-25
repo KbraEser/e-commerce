@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { HiOutlineUser } from 'react-icons/hi'
 import { IoIosSearch } from 'react-icons/io'
-import { Heart, Menu, ShoppingCart } from 'lucide-react'
+import { Heart, ShoppingCart } from 'lucide-react'
 import { BiMenuAltRight } from 'react-icons/bi'
 
 const Navbar = () => {
