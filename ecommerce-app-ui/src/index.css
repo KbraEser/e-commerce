@@ -8,6 +8,7 @@
   --color-text-gray: #FAFAFA;
   --color-button: #2DC071;
   --color-green-background: #23856D;
+  --color-light: #BDBDBD;
 }
 
 @layer base {
