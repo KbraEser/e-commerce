@@ -9,6 +9,10 @@
   --color-button: #2DC071;
   --color-green-background: #23856D;
   --color-light: #BDBDBD;
+  --color-disabled: #8EC2F2;
+  --color-red: #E74040;
+
+
 }
 
 @layer base {

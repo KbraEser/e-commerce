@@ -9,7 +9,7 @@ const Season_Page = () => {
       <h2 className="text-4xl w-72 md:text-4xl md:w-96 font-bold text-primary ">Part of the Neural Universe</h2>
       <p className="text-gray-light w-63 font-normal text-xl md:w-96 ">We know how large objects will act, but things on a small scale.</p>
       
-      <div className ="flex flex-col md:flex-row gap-4">
+      <div className ="py-6 flex flex-col md:flex-row gap-2.5">
         <button className="bg-secondary md:bg-button text-white px-10 py-4 rounded">BUY NOW</button>
         <button className="border border-secondary md:border-button text-secondary md:text-button px-10 py-4 rounded">
           <span className="block md:hidden">Learn More</span>

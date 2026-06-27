@@ -1,7 +1,9 @@
-const Footer = () => {
+import Footer from '../components/Footer'
+
+export const FooterComponent = () => {
   return (
-    <div>Footer</div>
+    <Footer />
   )
 }
 
-export default Footer
+export default FooterComponent
