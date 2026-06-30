@@ -5,46 +5,56 @@ import shop_cart_4 from '../img/shop_cart-4.jpg'
 
 const productImages = [shop_cart_1, shop_cart_2, shop_cart_3, shop_cart_4]
 
-const products = Array.from({ length: 8 }).map((_, index) => ({
-  id: index + 1,
-  title: 'Graphic Design',
-  department: 'English Department',
-  oldPrice: '$16.48',
-  newPrice: '$6.48',
-  image: productImages[index % productImages.length],
-  colors: ['bg-sky-500', 'bg-teal-600', 'bg-orange-500', 'bg-slate-800'],
-}))
+const createProducts = (count: number) =>
+  Array.from({ length: count }).map((_, index) => ({
+    id: index + 1,
+    title: 'Graphic Design',
+    department: 'English Department',
+    oldPrice: '$16.48',
+    newPrice: '$6.48',
+    image: productImages[index % productImages.length],
+    colors: ['bg-sky-500', 'bg-teal-600', 'bg-orange-500', 'bg-slate-800'],
+  }))
 
-const ProductCard = () => {
+type ProductCardProps = {
+  showHeader?: boolean
+  count?: number
+}
+
+const ProductCard = ({ showHeader = true, count = 8 }: ProductCardProps) => {
+  const products = createProducts(count)
   return (
     <section className='product-card w-full bg-white'>
-      <div className='mx-auto flex w-full max-w-[1440px] flex-col items-center gap-12 px-4 py-20 sm:px-6 md:px-12'>
-        <div className='w-68 md:w-80 text-center'>
-          <span className='mb-2 block text-xl font-normal text-gray-light'>
-            Featured Products
-          </span>
-          <h2 className='mb-3 text-2xl font-bold uppercase text-primary'>
-            BESTSELLER PRODUCTS
-          </h2>
-          <p className='text-sm font-normal text-gray-light'>
-            Problems trying to resolve the conflict between
-          </p>
-        </div>
+      <div className='mx-auto flex w-full max-w-[1124px] flex-col items-center gap-12 px-4 py-20 sm:px-6 md:px-12'>
+        {showHeader && (
+          <div className='w-68 md:w-80 text-center'>
+            <span className='mb-2 block text-xl font-normal text-gray-light'>
+              Featured Products
+            </span>
+            <h2 className='mb-3 text-2xl font-bold uppercase text-primary'>
+              BESTSELLER PRODUCTS
+            </h2>
+            <p className='text-sm font-normal text-gray-light'>
+              Problems trying to resolve the conflict between
+            </p>
+          </div>
+        )}
 
         <div className='mx-auto flex w-full max-w-[1124px] flex-wrap justify-center gap-x-6 gap-y-12'>
           {products.map((product) => (
             <div
               key={product.id}
-              className='group flex w-full cursor-pointer flex-col items-center text-center sm:w-[calc(50%-12px)] md:w-[calc(25%-18px)]'
+              className='group flex w-full cursor-pointer flex-col items-center text-center transition-shadow duration-300 hover:shadow-lg sm:w-[calc(50%-12px)] md:w-[calc(25%-18px)]'
             >
-              <div className='mb-6 flex w-full justify-center md:aspect-[3/4] md:overflow-hidden'>
+              <div className='relative mb-6 flex w-full justify-center overflow-hidden md:aspect-[3/4]'>
                 <img
                   src={product.image}
                   alt={product.title}
-                  className='h-[427px] w-[348px] object-cover md:h-[427px] md:w-[238px]'
+                  className='h-[427px] w-[348px] object-cover transition-transform duration-500 group-hover:scale-110 md:h-[427px] md:w-[238px]'
                 />
+                <div className='absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10' />
               </div>
-              <h3 className='mb-1.5 text-base font-bold text-primary'>
+              <h3 className='mb-1.5 text-base font-bold text-primary transition-colors duration-300 group-hover:text-secondary'>
                 {product.title}
               </h3>
               <span className='mb-3 block text-xs font-bold text-gray-light'>

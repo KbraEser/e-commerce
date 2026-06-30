@@ -1,10 +1,17 @@
 import { Mail, Phone } from 'lucide-react'
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
 
-const Navbar_Contact = () => {
+type ContactProps = {
+  greenBackground?: boolean
+}
+const Navbar_Contact = ({greenBackground = false}:ContactProps) => {
   return (
-    <section className='hidden lg:flex bg-primary h-14 px-6 items-center'>
-        <div className='flex justify-between items-center gap-2 text-white w-full'>
+    <section
+      className={`hidden lg:flex h-14 w-full items-center px-6 ${
+        greenBackground ? 'bg-green-background' : 'bg-primary'
+      }`}
+    >
+        <div className='flex w-full justify-between items-center gap-2 text-white'>
             
             <div className='flex items-center '>
 

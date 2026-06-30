@@ -1,11 +1,13 @@
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'
 
-const Footer = () => {
+type FooterProps = {
+  whiteTopBar?: boolean
+}
+
+const Footer = ({ whiteTopBar = false }: FooterProps) => {
   return (
     <footer className="w-full bg-white font-sans text-gray-600">
-  
-   
-    <div className="bg-text-gray ">
+      <div className={whiteTopBar ? 'bg-white' : 'bg-text-gray'}>
       <div className="max-w-[1440px] mx-auto px-11 md:px-24 py-15 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-[#E6E6E6]">
         <h2 className="text-2xl font-bold text-primary">Bandage</h2>
         <div className="flex items-center gap-5 text-secondary">
@@ -15,6 +17,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
+    
   
    
     <div className="bg-white">

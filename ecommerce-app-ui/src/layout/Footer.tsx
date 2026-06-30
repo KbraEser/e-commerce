@@ -1,8 +1,12 @@
 import Footer from '../components/Footer'
 
-export const FooterComponent = () => {
+type FooterComponentProps = {
+  whiteTopBar?: boolean
+}
+
+export const FooterComponent = ({ whiteTopBar }: FooterComponentProps) => {
   return (
-    <Footer />
+    <Footer whiteTopBar={whiteTopBar} />
   )
 }
 

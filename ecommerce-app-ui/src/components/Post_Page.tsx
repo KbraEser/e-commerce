@@ -1,4 +1,4 @@
-import { AlarmClock, AreaChart, ArrowRight, ChevronRight, Clock4 } from 'lucide-react'
+import { AlarmClock, AreaChart, ChevronRight } from 'lucide-react'
 import post_1 from '../img/post_img.jpg'
 
 const posts = [
