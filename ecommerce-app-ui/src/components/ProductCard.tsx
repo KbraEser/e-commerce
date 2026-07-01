@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import shop_cart_1 from '../img/shop_cart-1.jpg'
 import shop_cart_2 from '../img/shop_cart-2.jpg'
 import shop_cart_3 from '../img/shop_cart-3.jpg'
@@ -18,32 +19,58 @@ const createProducts = (count: number) =>
 
 type ProductCardProps = {
   showHeader?: boolean
+  headerTitleOnly?: boolean
   count?: number
 }
 
-const ProductCard = ({ showHeader = true, count = 8 }: ProductCardProps) => {
+const ProductCard = ({
+  showHeader = true,
+  headerTitleOnly = false,
+  count = 8,
+}: ProductCardProps) => {
   const products = createProducts(count)
   return (
-    <section className='product-card w-full bg-white'>
-      <div className='mx-auto flex w-full max-w-[1124px] flex-col items-center gap-12 px-4 py-20 sm:px-6 md:px-12'>
+    <section
+      className={`product-card w-full ${
+        headerTitleOnly ? 'bg-text-gray' : 'bg-white'
+      }`}
+    >
+      <div
+        className={`mx-auto flex w-full max-w-[1124px] flex-col gap-12 px-4 py-20 sm:px-6 md:px-12 ${
+          headerTitleOnly ? 'items-start' : 'items-center'
+        }`}
+      >
         {showHeader && (
-          <div className='w-68 md:w-80 text-center'>
-            <span className='mb-2 block text-xl font-normal text-gray-light'>
-              Featured Products
-            </span>
-            <h2 className='mb-3 text-2xl font-bold uppercase text-primary'>
+          <div
+            className={
+              headerTitleOnly ? 'w-full text-left' : 'w-68 md:w-80 text-center'
+            }
+          >
+            {!headerTitleOnly && (
+              <span className='mb-2 block text-xl font-normal text-gray-light'>
+                Featured Products
+              </span>
+            )}
+            <h2
+              className={`text-2xl font-bold uppercase text-primary ${
+                headerTitleOnly ? '' : 'mb-3'
+              }`}
+            >
               BESTSELLER PRODUCTS
             </h2>
-            <p className='text-sm font-normal text-gray-light'>
-              Problems trying to resolve the conflict between
-            </p>
+            {!headerTitleOnly && (
+              <p className='text-sm font-normal text-gray-light'>
+                Problems trying to resolve the conflict between
+              </p>
+            )}
           </div>
         )}
 
         <div className='mx-auto flex w-full max-w-[1124px] flex-wrap justify-center gap-x-6 gap-y-12'>
           {products.map((product) => (
-            <div
+            <Link
               key={product.id}
+              to={`/product-details/${product.id}`}
               className='group flex w-full cursor-pointer flex-col items-center text-center transition-shadow duration-300 hover:shadow-lg sm:w-[calc(50%-12px)] md:w-[calc(25%-18px)]'
             >
               <div className='relative mb-6 flex w-full justify-center overflow-hidden md:aspect-[3/4]'>
@@ -76,7 +103,7 @@ const ProductCard = ({ showHeader = true, count = 8 }: ProductCardProps) => {
                   />
                 ))}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -6,13 +6,23 @@ type BreadcrumbItem = {
 }
 
 type BreadcrumbProps = {
+  title?: string
   items: BreadcrumbItem[]
 }
 
-const Breadcrumb = ({ items }: BreadcrumbProps) => {
+const Breadcrumb = ({ title, items }: BreadcrumbProps) => {
+  const hasTitle = Boolean(title?.trim())
+
   return (
     <section className="bg-text-gray">
-      <div className="mx-auto flex max-w-[1040px] justify-center px-6 py-9 md:justify-end">
+      <div
+        className={`mx-auto flex max-w-[1040px] items-center px-9 py-9 ${
+          hasTitle ? 'justify-between' : 'justify-start'
+        }`}
+      >
+        {hasTitle && (
+          <h1 className="text-2xl font-bold text-primary">{title}</h1>
+        )}
         <nav aria-label="breadcrumb">
           <ol className="flex items-center gap-1">
             {items.map((item, index) => (

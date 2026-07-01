@@ -5,10 +5,16 @@ type FooterProps = {
 }
 
 const Footer = ({ whiteTopBar = false }: FooterProps) => {
+  const containerClass = whiteTopBar
+    ? 'mx-auto w-full max-w-[1050px] px-9'
+    : 'mx-auto w-full max-w-[1440px] px-11 md:px-24'
+
   return (
     <footer className="w-full bg-white font-sans text-gray-600">
       <div className={whiteTopBar ? 'bg-white' : 'bg-text-gray'}>
-      <div className="max-w-[1440px] mx-auto px-11 md:px-24 py-15 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-[#E6E6E6]">
+      <div
+        className={`flex flex-col items-start justify-between gap-4 border-b border-[#E6E6E6] py-15 md:flex-row md:items-center ${containerClass}`}
+      >
         <h2 className="text-2xl font-bold text-primary">Bandage</h2>
         <div className="flex items-center gap-5 text-secondary">
           <FaFacebook />
@@ -21,7 +27,9 @@ const Footer = ({ whiteTopBar = false }: FooterProps) => {
   
    
     <div className="bg-white">
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-11 py-16 md:flex-row md:px-24">
+      <div
+        className={`flex flex-col gap-8 py-16 md:flex-row ${containerClass}`}
+      >
         <div className="md:flex-[2]">
           <h5 className="mb-5 text-base font-bold text-primary">Company Info</h5>
           <div className="flex flex-col gap-3 text-sm font-bold text-gray-light">
@@ -87,12 +95,21 @@ const Footer = ({ whiteTopBar = false }: FooterProps) => {
       </div>
     </div>
   
+    
    
     <div className="bg-text-gray">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-24 py-6 text-center md:text-left">
-        <p className="text-sm font-bold text-center text-gray-light w-[200px] mx-auto">Made With Love By Finland All Right Reserved</p>
+      <div
+        className={`py-6 text-center md:text-left ${containerClass}`}
+      >
+        <p
+          className={`text-sm font-bold text-gray-light  ${
+            whiteTopBar ? 'text-left' : 'mx-auto text-center w-[200px]'
+          }`}
+        >
+          Made With Love By Finland All Right Reserved
+        </p>
       </div>
-    </div>
+    </div> 
   
   </footer>
   )

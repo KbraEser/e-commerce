@@ -19,7 +19,7 @@ export default function BrandLogos() {
 
   return (
    
-    <div className="w-full bg-[#FAFAFA] py-12">
+    <div className="w-full bg-[#FAFAFA] py-16">
       
      
       <div className="max-w-[1050px] mx-auto px-6 md:px-24">

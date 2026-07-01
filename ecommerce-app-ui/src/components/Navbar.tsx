@@ -4,9 +4,18 @@ import { IoIosSearch } from 'react-icons/io'
 import { Heart, ShoppingCart } from 'lucide-react'
 import { BiMenuAltRight } from 'react-icons/bi'
 
-const Navbar = () => {
+type NavbarProps = {
+  constrained?: boolean
+}
+
+const Navbar = ({ constrained = false }: NavbarProps) => {
   return (
-    <section className='bg-white h-14 py-3 my-3 flex  items-center  px-9'>
+    <section className='bg-white my-3 w-full'>
+      <div
+        className={`flex h-14 items-center px-9 py-3 ${
+          constrained ? 'mx-auto max-w-[1050px]' : ''
+        }`}
+      >
    
     <Link to="/" className="brand-logo mr-30 w-[187px]">
         <h1 className='text-2xl leading-8 text-primary'>Bandage</h1>
@@ -17,7 +26,7 @@ const Navbar = () => {
     <div className='hidden md:flex items-center gap-4 text-gray-light'>
         <Link to="/" >Home</Link>
         <Link to="/shop" >Shop</Link>
-        <Link to="/categories" >About</Link>
+        <Link to="/team" >About</Link>
         <Link to="/blog" >Blog</Link>
         <Link to="/contact" >Contact</Link>
         <Link to="/pagesS" >Pages</Link>
@@ -51,6 +60,7 @@ const Navbar = () => {
     
     </Link>
 
+    </div>
     </div>
     </div>
 

@@ -9,8 +9,9 @@ import FeaturedCategories from '../components/FeaturedCategories'
 const ProductsPage = () => {
   return (
     <>
-      <Header greenBackground={true} />
+      <Header greenBackground={true} constrained />
       <Breadcrumb
+        title="Shop"
         items={[
           { label: 'Home', to: '/' },
           { label: 'Shop' },

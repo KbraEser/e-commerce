@@ -3,14 +3,24 @@ import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
 
 type ContactProps = {
   greenBackground?: boolean
+  constrained?: boolean
 }
-const Navbar_Contact = ({greenBackground = false}:ContactProps) => {
+
+const Navbar_Contact = ({
+  greenBackground = false,
+  constrained = false,
+}: ContactProps) => {
   return (
     <section
-      className={`hidden lg:flex h-14 w-full items-center px-6 ${
+      className={`hidden lg:flex h-14 w-full items-center ${
         greenBackground ? 'bg-green-background' : 'bg-primary'
       }`}
     >
+      <div
+        className={`flex w-full items-center px-6 ${
+          constrained ? 'mx-auto max-w-[1050px]' : ''
+        }`}
+      >
         <div className='flex w-full justify-between items-center gap-2 text-white'>
             
             <div className='flex items-center '>
@@ -44,6 +54,7 @@ const Navbar_Contact = ({greenBackground = false}:ContactProps) => {
 
             
         </div>
+      </div>
     </section>
   )
 }
