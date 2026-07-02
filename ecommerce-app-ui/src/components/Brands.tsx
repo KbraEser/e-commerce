@@ -19,7 +19,7 @@ export default function BrandLogos() {
 
   return (
    
-    <div className="w-full bg-[#FAFAFA] py-16">
+    <div className="w-full bg-text-gray py-16">
       
      
       <div className="max-w-[1050px] mx-auto px-6 md:px-24">
@@ -30,12 +30,12 @@ export default function BrandLogos() {
           {brands.map((brand) => (
             <div 
               key={brand.id} 
-              className="flex h-6 min-w-[70px] max-w-[140px] items-center justify-center transition-opacity duration-300 hover:opacity-80"
+              className="flex h-10 min-w-[110px] max-w-[180px] items-center justify-center transition-opacity duration-300 hover:opacity-80 lg:h-6 lg:min-w-[70px] lg:max-w-[140px]"
             >
               <img 
                 src={brand.src} 
                 alt={`${brand.name} logo`} 
-                className="max-h-10 lg:max-h-14 max-w-full object-contain transition-all duration-300 hover:opacity-100" 
+                className="max-h-14 max-w-full object-contain transition-all duration-300 hover:opacity-100 " 
               />
             </div>
           ))}

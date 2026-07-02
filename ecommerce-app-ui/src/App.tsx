@@ -4,7 +4,10 @@ import ProductsPage from './pages/ShopPage'
 import ProductDetailsPage from './pages/ProductDetailsPage'
 import ContactPage from './pages/ContactPage'
 import AboutPage from './pages/AboutPage'
+import PostDetailPage from './pages/PostDetailPage'
 import TeamPage from './pages/TeamPage'
+import LoginPage from './pages/LoginPage'
+import SignupPage from './pages/SignupPage'
 
 function App() {
   return (
@@ -15,7 +18,10 @@ function App() {
         <Route path="/product-details/:id" element={<ProductDetailsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/posts/:id" element={<PostDetailPage />} />
         <Route path="/team" element={<TeamPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
       </Routes>
     </BrowserRouter>
   )

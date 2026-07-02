@@ -1,41 +1,6 @@
+import { Link } from 'react-router-dom'
 import { AlarmClock, AreaChart, ChevronRight } from 'lucide-react'
-import post_1 from '../img/post_img.jpg'
-
-const posts = [
-    {
-      "id": 1,
-      "imageUrl": post_1, 
-      "isNew": true,
-      "tags": ["Google", "Trending", "New"],
-      "title": "Loudest à la Madison #1 (L'integral)",
-      "description": "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
-      "date": "22 April 2021",
-      "commentCount": 10,
-      "link": "/posts/1"
-    },
-    {
-      "id": 2,
-      "imageUrl": post_1,
-      "isNew": true,
-      "tags": ["Google", "Trending", "New"],
-      "title": "Loudest à la Madison #2 (L'integral)",
-      "description": "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
-      "date": "22 April 2021",
-      "commentCount": 10,
-      "link": "/posts/2"
-    },
-    {
-      "id": 3,
-      "imageUrl": post_1,
-      "isNew": true,
-      "tags": ["Google", "Trending", "New"],
-      "title": "Loudest à la Madison #3 (L'integral)",
-      "description": "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
-      "date": "22 April 2021",
-      "commentCount": 10,
-      "link": "/posts/3"
-    }
-  ]
+import { posts } from '../data/posts'
 
 const Post_Page = () => {
   return (
@@ -100,14 +65,14 @@ const Post_Page = () => {
                   </div>
                 </div>
 
-                <a
-                  href={post.link}
+                <Link
+                  to={`/posts/${post.id}`}
                   className='inline-flex items-center gap-1 text-sm font-bold text-gray-light transition-colors hover:text-blue-500'
                 >
                   Learn More
                 
                   <ChevronRight className='h-4 w-4 text-secondary' />
-                </a>
+                </Link>
               </div>
             </div>
           ))}

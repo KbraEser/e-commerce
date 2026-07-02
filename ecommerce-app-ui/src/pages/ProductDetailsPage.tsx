@@ -9,7 +9,7 @@ const ProductDetailsPage = () => {
   return (
     <>
        
-    <Header greenBackground={true} constrained />
+    <Header greenBackground={true} constrained mobileVariant="shop" />
     <Breadcrumb
         items={[
           { label: 'Home', to: '/' },

@@ -13,11 +13,24 @@
   --color-red: #E74040;
   --color-light-open-gray: #ECECEC;
   --color-gray-dark: #858585;
+  --color-work-us: #2A7CC7;
+  ;
 
 
 }
 
 @layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 0;
+  }
+
   body {
     font-family: var(--font-sans);
     font-weight: 600;

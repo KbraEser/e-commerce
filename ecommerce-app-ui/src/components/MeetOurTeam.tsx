@@ -29,8 +29,8 @@ export default function MeetOurTeam() {
       <div className="max-w-[1050px] mx-auto px-6 md:px-24 flex flex-col items-center">
         
 
-        <div className="flex flex-col items-center text-center  mb-16 md:mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary tracking-wide mb-4">
+        <div className="mb-16 flex h-[190px] w-[310px] flex-col items-center justify-center text-center md:mb-20 md:h-auto md:w-auto">
+          <h2 className="text-5xl  font-bold text-primary tracking-wide mb-4">
             Meet Our Team
           </h2>
           <p className="text-sm text-gray-light leading-relaxed font-medium">
@@ -43,7 +43,7 @@ export default function MeetOurTeam() {
           {teamMembers.map((member) => (
             <div
               key={member.id}
-              className="mx-auto flex w-[330px] max-w-full shrink-0 flex-col overflow-hidden bg-white shadow-sm transition-shadow duration-300 hover:shadow-md md:mx-0 md:w-auto md:flex-1"
+              className="mx-auto flex w-[330px] max-w-full shrink-0 flex-col overflow-hidden bg-white   hover:shadow-md md:mx-0 md:w-auto md:flex-1"
             >
               <div className="h-[231px] w-full bg-gray-100">
                 <img
@@ -62,13 +62,25 @@ export default function MeetOurTeam() {
                 </p>
 
                 <div className="flex items-center gap-4">
-                  <a href="#" className="text-secondary hover:text-disabled transition-colors" aria-label="Facebook">
+                  <a
+                    href="#"
+                    className="text-[#1877F2] transition-colors lg:text-secondary lg:hover:text-disabled"
+                    aria-label="Facebook"
+                  >
                     <FaFacebook />
                   </a>
-                  <a href="#" className="text-secondary hover:text-disabled transition-colors" aria-label="Instagram">
+                  <a
+                    href="#"
+                    className="text-[#E4405F] transition-colors lg:text-secondary lg:hover:text-disabled"
+                    aria-label="Instagram"
+                  >
                     <FaInstagram />
                   </a>
-                  <a href="#" className="text-secondary hover:text-disabled transition-colors" aria-label="Twitter">
+                  <a
+                    href="#"
+                    className="text-[#1DA1F2] transition-colors lg:text-secondary lg:hover:text-disabled"
+                    aria-label="Twitter"
+                  >
                     <FaTwitter />
                   </a>
                 </div>

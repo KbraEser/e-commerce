@@ -9,7 +9,7 @@ import FeaturedCategories from '../components/FeaturedCategories'
 const ProductsPage = () => {
   return (
     <>
-      <Header greenBackground={true} constrained />
+      <Header greenBackground={true} constrained mobileVariant="shop" />
       <Breadcrumb
         title="Shop"
         items={[
