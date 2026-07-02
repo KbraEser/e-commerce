@@ -22,7 +22,7 @@ const AuthLayout = ({
 }: AuthLayoutProps) => {
   return (
     <div className="flex h-dvh w-full overflow-hidden font-sans text-primary">
-      {/* Left panel — brand */}
+     
       <aside className="relative hidden h-dvh w-[45%] shrink-0 overflow-hidden bg-primary lg:flex lg:flex-col lg:justify-between">
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(35,166,240,0.15)_0%,transparent_50%,rgba(45,192,113,0.08)_100%)]" />
         <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-secondary/10 blur-3xl" />
@@ -68,7 +68,7 @@ const AuthLayout = ({
         </div>
       </aside>
 
-      {/* Right panel — form */}
+     
       <main className="flex h-dvh min-h-0 min-w-0 flex-1 flex-col overflow-hidden bg-text-gray">
         <header className="flex h-14 shrink-0 items-center justify-between border-b border-light-open-gray/60 bg-white px-6 md:px-10 lg:border-none lg:bg-transparent">
           <Link to="/" className="text-xl font-bold tracking-wide text-primary lg:hidden">
