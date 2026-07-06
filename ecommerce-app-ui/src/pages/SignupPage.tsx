@@ -3,12 +3,11 @@ import { Store } from 'lucide-react'
 import AuthLayout from '../components/auth/AuthLayout'
 import FormField from '../components/auth/FormField'
 import SelectField from '../components/auth/SelectField'
+import { useDispatch, useSelector } from 'react-redux'
+import type { AppDispatch, RootState } from '../store'
+import { fetchRoles } from '../store/thunks/clientThunks'
+import { useEffect } from 'react'
 
-const ROLES = [
-  { id: 1, name: 'Admin', code: 'admin' },
-  { id: 2, name: 'Store', code: 'store' },
-  { id: 3, name: 'Customer', code: 'customer' },
-] as const
 
 type SignupFormValues = {
   name: string
@@ -29,6 +28,15 @@ const TAX_NO_REGEX = /^T\d{4}V\d{6}$/
 const IBAN_REGEX = /^TR\d{24}$/i
 
 const SignupPage = () => {
+  const dispatch = useDispatch<AppDispatch>()
+
+  const roles = useSelector((state: RootState) => state.client.roles)
+
+  useEffect(()=>{
+    dispatch(fetchRoles())
+  },[dispatch])
+  
+
   const {
     register,
     handleSubmit,
@@ -113,7 +121,7 @@ const SignupPage = () => {
 
         <SelectField
           label="Account Type"
-          options={ROLES.map((role) => ({ value: role.id, label: role.name }))}
+          options={roles.map((role) => ({ value: role.id, label: role.name }))}
           error={errors.role_id?.message}
           {...register('role_id', {
             required: 'Please select an account type.',

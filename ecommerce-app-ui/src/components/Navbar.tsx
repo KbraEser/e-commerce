@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
-import { HiOutlineUser } from 'react-icons/hi'
 import { IoIosSearch } from 'react-icons/io'
 import { Heart, ShoppingCart } from 'lucide-react'
 import { BiMenuAltRight } from 'react-icons/bi'
+import UserNavItem from './UserNavItem'
+import ShopNavDropdown from './ShopNavDropdown'
 
 type NavbarProps = {
   constrained?: boolean
 }
+
 
 const Navbar = ({ constrained = false }: NavbarProps) => {
   return (
@@ -25,7 +27,7 @@ const Navbar = ({ constrained = false }: NavbarProps) => {
 
     <div className='hidden md:flex items-center gap-4 text-gray-light'>
         <Link to="/" >Home</Link>
-        <Link to="/shop" >Shop</Link>
+        <ShopNavDropdown />
         <Link to="/team" >About</Link>
         <Link to="/blog" >Blog</Link>
         <Link to="/contact" >Contact</Link>
@@ -35,10 +37,7 @@ const Navbar = ({ constrained = false }: NavbarProps) => {
 
     <div className='text-primary md:text-secondary flex justify-end items-center'>
 
-    <Link to="/login" className="hidden lg:flex login-register items-center px-5">
-    <HiOutlineUser className='w-4 h-4 mr-1' />
-        <span className='text-sm leading-6'>Login / Register</span>
-    </Link>
+    <UserNavItem className="hidden md:flex login-register" />
     
 
     <Link to="/search" aria-label="Ara" >

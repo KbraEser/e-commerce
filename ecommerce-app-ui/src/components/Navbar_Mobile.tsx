@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import { HiOutlineUser } from 'react-icons/hi'
 import { IoIosSearch } from 'react-icons/io'
 import { Heart, ShoppingCart } from 'lucide-react'
 import { BiMenuAltRight } from 'react-icons/bi'
+import UserNavItem from './UserNavItem'
 
 type Navbar_MobileProps = {
   className?: string
@@ -78,10 +78,7 @@ const Navbar_Mobile = ({
 
         {isShop && (
           <div className="mt-12 flex w-full flex-col items-center gap-12 text-secondary">
-            <Link to="/login" className="flex items-center gap-2 text-sm font-bold leading-6">
-              <HiOutlineUser className="h-4 w-4" />
-              Login / Register
-            </Link>
+            <UserNavItem className="text-sm font-bold leading-6" />
             <Link to="/search" aria-label="Ara">
               <IoIosSearch className="h-6 w-6" />
             </Link>

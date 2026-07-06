@@ -8,13 +8,55 @@ import PostDetailPage from './pages/PostDetailPage'
 import TeamPage from './pages/TeamPage'
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
+import { useEffect } from 'react'
+import { clearAuthToken, setAuthToken } from './service/axios'
+import { verifySession } from './store/thunks/authThunks'
+import { useDispatch } from 'react-redux'
+import type { AppDispatch } from './store'
+import { clearToken, getToken, renewToken } from './service/tokenStorage'
+import { fetchCategories } from './store/thunks/productThunks'
 
 function App() {
+  const dispatch = useDispatch<AppDispatch>()
+
+  useEffect(() => {
+    const initAuth = async () => {
+      const stored = getToken()
+
+      if (!stored) {
+        clearAuthToken()
+        return
+      }
+
+      setAuthToken(stored.token)
+      const result = await dispatch(verifySession())
+
+      if (verifySession.fulfilled.match(result)) {
+        renewToken(result.payload.token, stored.rememberMe)
+        setAuthToken(result.payload.token)
+      } else if (
+        verifySession.rejected.match(result) &&
+        result.payload?.unauthorized
+      ) {
+        clearToken()
+        clearAuthToken()
+      }
+    }
+
+    initAuth()
+    dispatch(fetchCategories())
+  }, [dispatch])
+
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<ProductsPage />} />
+        <Route
+          path="/shop/:gender/:categoryName/:categoryId"
+          element={<ProductsPage />}
+        />
         <Route path="/product-details/:id" element={<ProductDetailsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/about" element={<AboutPage />} />
