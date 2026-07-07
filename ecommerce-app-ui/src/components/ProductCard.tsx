@@ -1,34 +1,17 @@
 import { Link } from 'react-router-dom'
-import shop_cart_1 from '../img/shop_cart-1.jpg'
-import shop_cart_2 from '../img/shop_cart-2.jpg'
-import shop_cart_3 from '../img/shop_cart-3.jpg'
-import shop_cart_4 from '../img/shop_cart-4.jpg'
-
-const productImages = [shop_cart_1, shop_cart_2, shop_cart_3, shop_cart_4]
-
-const createProducts = (count: number) =>
-  Array.from({ length: count }).map((_, index) => ({
-    id: index + 1,
-    title: 'Graphic Design',
-    department: 'English Department',
-    oldPrice: '$16.48',
-    newPrice: '$6.48',
-    image: productImages[index % productImages.length],
-    colors: ['bg-sky-500', 'bg-teal-600', 'bg-orange-500', 'bg-slate-800'],
-  }))
+import type { Product } from '../store/types'
 
 type ProductCardProps = {
   showHeader?: boolean
   headerTitleOnly?: boolean
-  count?: number
+  products: Product[]
 }
 
 const ProductCard = ({
   showHeader = true,
   headerTitleOnly = false,
-  count = 8,
+  products,
 }: ProductCardProps) => {
-  const products = createProducts(count)
   return (
     <section
       className={`product-card w-full ${
@@ -75,33 +58,17 @@ const ProductCard = ({
             >
               <div className='relative mb-6 flex w-full justify-center overflow-hidden md:aspect-[3/4]'>
                 <img
-                  src={product.image}
-                  alt={product.title}
+                  src={product.images[0]?.url}
+                  alt={product.name}
                   className='h-[427px] w-[348px] object-cover transition-transform duration-500 group-hover:scale-110 md:h-[427px] md:w-[238px]'
                 />
                 <div className='absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10' />
               </div>
               <h3 className='mb-1.5 text-base font-bold text-primary transition-colors duration-300 group-hover:text-secondary'>
-                {product.title}
+                {product.name}
               </h3>
-              <span className='mb-3 block text-xs font-bold text-gray-light'>
-                {product.department}
-              </span>
-
-              <div className='mb-4 flex items-center gap-2 text-sm font-bold'>
-                <span className='text-slate-300 line-through'>
-                  {product.oldPrice}
-                </span>
-                <span className='text-teal-600'>{product.newPrice}</span>
-              </div>
-
-              <div className='flex items-center gap-1.5'>
-                {product.colors.map((colorClass, index) => (
-                  <span
-                    key={index}
-                    className={`inline-block h-4 w-4 rounded-full shadow-sm transition-transform hover:scale-110 ${colorClass}`}
-                  />
-                ))}
+              <div className='mb-4 text-sm font-bold text-teal-600'>
+                ₺{product.price}
               </div>
             </Link>
           ))}

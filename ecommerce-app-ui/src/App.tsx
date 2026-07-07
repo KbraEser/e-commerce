@@ -14,7 +14,7 @@ import { verifySession } from './store/thunks/authThunks'
 import { useDispatch } from 'react-redux'
 import type { AppDispatch } from './store'
 import { clearToken, getToken, renewToken } from './service/tokenStorage'
-import { fetchCategories } from './store/thunks/productThunks'
+import { fetchCategories, fetchProducts } from './store/thunks/productThunks'
 
 function App() {
   const dispatch = useDispatch<AppDispatch>()
@@ -45,6 +45,7 @@ function App() {
 
     initAuth()
     dispatch(fetchCategories())
+   
   }, [dispatch])
 
 

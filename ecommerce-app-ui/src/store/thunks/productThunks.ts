@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getCategories } from '../../service/categoryService'
-import type { Category } from '../types'
+import type { Category, Product, ProductsResponse } from '../types'
+import { getProducts } from '../../service/productService'
 
 interface FetchCategoriesState {
   product: {
@@ -8,6 +9,15 @@ interface FetchCategoriesState {
   }
 }
 
+interface FetchProductsState {
+  product: {
+    categoryId: number | null
+    filter: string
+    sort: string
+    limit: number
+    offset: number
+  }
+}
 export const fetchCategories = createAsyncThunk<
   Category[],
   void,
@@ -20,4 +30,29 @@ export const fetchCategories = createAsyncThunk<
   }
 
   return getCategories()
+})
+
+
+export const fetchProducts = createAsyncThunk<
+  ProductsResponse,
+  void,
+  { state: FetchProductsState }
+>('product/fetchProducts', async (_, { getState }) => {
+  const { categoryId, filter, sort, limit, offset } = getState().product
+
+  const params: Record<string, string | number> = {
+    limit,
+    offset,
+  }
+
+  if (categoryId !== null) {
+    params.category = categoryId
+  }
+  if (filter) {
+    params.filter = filter
+  }
+  if (sort) {
+    params.sort = sort
+  }
+  return getProducts(params)
 })

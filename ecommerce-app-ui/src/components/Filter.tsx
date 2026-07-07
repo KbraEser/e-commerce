@@ -3,28 +3,44 @@ import { useState } from 'react';
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { type SelectChangeEvent } from '@mui/material/Select';
+import { useDispatch, useSelector } from 'react-redux';
+import type { AppDispatch, RootState } from '../store';
+import { setFilter, setOffset, setSort } from '../store/slice/productSlice';
+import { fetchProducts } from '../store/thunks/productThunks';
 
 const sortOptions = [
-  'Popularity',
-  'Newest',
-  'Price: Low to High',
-  'Price: High to Low',
-];
+  { label: 'Price: Low to High', value: 'price:asc' },
+  { label: 'Price: High to Low', value: 'price:desc' },
+  { label: 'Rating: Low to High', value: 'rating:asc' },
+  { label: 'Rating: High to Low', value: 'rating:desc' },
+]
 
 export default function FilterRow() {
+  const dispatch = useDispatch<AppDispatch>()
+  const {total} = useSelector((state: RootState) => state.product)
+
+  
   const [viewMode, setViewMode] = useState('grid');
-  const [sortBy, setSortBy] = useState('Popularity');
+  const [filterInput, setFilterInput] = useState('')
+  const [sortBy, setSortBy] = useState('');
 
   const handleSortChange = (event: SelectChangeEvent) => {
     setSortBy(event.target.value);
   };
+
+  const handleFilterClick = () => {
+    dispatch(setFilter(filterInput))
+    dispatch(setSort(sortBy))
+    dispatch(setOffset(0))
+    dispatch(fetchProducts())
+  }
 
   return (
     <div className="w-full bg-white font-sans text-gray-light">
       <div className="mx-auto mb-2 w-full max-w-[1440px] px-4 py-6 sm:px-6 md:px-12">
         <div className="mx-auto flex w-full max-w-[1060px] flex-col items-center gap-6 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center justify-center text-sm font-bold text-gray-light tracking-wide shrink-0">
-            Showing all 12 results
+            Showing all {total} results
           </div>
 
           <div className="flex items-center justify-center gap-4 shrink-0">
@@ -62,6 +78,10 @@ export default function FilterRow() {
                 value={sortBy}
                 onChange={handleSortChange}
                 displayEmpty
+                renderValue={(selected) => {
+                  if (!selected) return 'Sort by';
+                  return sortOptions.find((option) => option.value === selected)?.label || '';
+                }}
                 sx={{
                   bgcolor: '#F9F9F9',
                   color: '#737373',
@@ -88,23 +108,33 @@ export default function FilterRow() {
               >
                 {sortOptions.map((option) => (
                   <MenuItem
-                    key={option}
-                    value={option}
+                    key={option.value}
+                    value={option.value}
                     sx={{
                       fontSize: '14px',
-                      color: option === sortBy ? '#252B42' : '#737373',
-                      fontWeight: option === sortBy ? 600 : 400,
+                      color: option.value === sortBy ? '#252B42' : '#737373',
+                      fontWeight: option.value === sortBy ? 600 : 400,
                     }}
                   >
-                    {option}
+                    {option.label}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
 
+            <input
+              type="text"
+              placeholder="Filter products..."
+              value={filterInput}
+              onChange={(e) => setFilterInput(e.target.value)}
+              className="rounded-md border border-light-open-gray bg-[#F9F9F9] px-4 py-3.5 text-sm text-gray-light outline-none focus:border-primary"
+            />
+
+
+
             <button
               className="bg-secondary text-white text-sm font-bold px-8 py-3.5 rounded-md hover:bg-[#1b8ecf] transition-colors shadow-sm flex items-center justify-center whitespace-nowrap"
-              onClick={() => console.log('Filtreleme tetiklendi:', sortBy)}
+              onClick={handleFilterClick}
             >
               Filter
             </button>

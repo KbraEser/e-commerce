@@ -38,13 +38,25 @@ export interface Category {
   gender: string
 }
 
+export interface ProductImage {
+  url: string
+  index: number
+}
 export interface Product {
-  id: string
+  id: number
   name: string
+  description: string
   price: number
-  description?: string
-  image?: string
-  categoryId?: number
+  stock: number
+  store_id: number
+  category_id: number
+  rating: number
+  sell_count: number
+  images: ProductImage[]
+}
+export interface ProductsResponse {
+  products: Product[]
+  total: number
 }
 
 export type FetchState = 'NOT_FETCHED' | 'FETCHING' | 'FETCHED' | 'FAILED'

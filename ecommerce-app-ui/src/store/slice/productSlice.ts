@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { Category, FetchState, Product } from '../types'
-import { fetchCategories } from '../thunks/productThunks'
+import { fetchCategories, fetchProducts } from '../thunks/productThunks'
 
 interface ProductState {
   categories: Category[]
@@ -8,7 +8,9 @@ interface ProductState {
   total: number
   limit: number
   offset: number
+  categoryId: number | null
   filter: string
+  sort: string
   fetchState: FetchState
 }
 
@@ -18,7 +20,9 @@ const initialState: ProductState = {
   total: 0,
   limit: 25,
   offset: 0,
+  categoryId:  null,
   filter: '',
+  sort: '',
   fetchState: 'NOT_FETCHED',
 }
 
@@ -44,6 +48,12 @@ const productSlice = createSlice({
     setFilter: (state, action: PayloadAction<string>) => {
       state.filter = action.payload
     },
+    setCategoryId: (state, action: PayloadAction<number | null>) => {
+      state.categoryId = action.payload
+    },
+    setSort: (state, action: PayloadAction<string>) => {
+      state.sort = action.payload
+    },
     setFetchState: (state, action: PayloadAction<FetchState>) => {
       state.fetchState = action.payload
     },
@@ -51,6 +61,17 @@ const productSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchCategories.fulfilled, (state, action) => {
       state.categories = action.payload
+    })
+    builder.addCase(fetchProducts.fulfilled, (state, action) => {
+      state.productList = action.payload.products
+      state.total = action.payload.total
+      state.fetchState = 'FETCHED'
+    })
+    builder.addCase(fetchProducts.pending, (state) => {
+      state.fetchState = 'FETCHING'
+    })
+    builder.addCase(fetchProducts.rejected, (state) => {
+      state.fetchState = 'FAILED'
     })
   },
 })
@@ -62,6 +83,8 @@ export const {
   setLimit,
   setOffset,
   setFilter,
+  setCategoryId,
+  setSort,
   setFetchState,
 } = productSlice.actions
 
