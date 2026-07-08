@@ -41,10 +41,53 @@ const shoppingCartSlice = createSlice({
         })
       }
     },
+    toggleCartItemChecked: (state, action: PayloadAction<number>) => {
+      const item = state.cart.find(
+        (cartItem) => cartItem.product.id === action.payload
+      )
+      if (item) {
+        item.checked = !item.checked
+      }
+    },
+    toggleAllCartItems: (state, action: PayloadAction<boolean>) => {
+      state.cart.forEach((item) => {
+        item.checked = action.payload
+      })
+    },
+    updateCartItemCount: (
+      state,
+      action: PayloadAction<{ productId: number; count: number }>
+    ) => {
+      const item = state.cart.find(
+        (cartItem) => cartItem.product.id === action.payload.productId
+      )
+      if (item) {
+        item.count = Math.max(1, action.payload.count)
+      }
+    },
+    removeFromCart: (state, action: PayloadAction<number>) => {
+      state.cart = state.cart.filter(
+        (item) => item.product.id !== action.payload
+      )
+    },
+    resetShoppingCart: (state) => {
+      state.cart = []
+      state.payment = null
+      state.address = null
+    },
   },
 })
 
-export const { setCart, setPayment, setAddress, addToCart } =
-  shoppingCartSlice.actions
+export const {
+  setCart,
+  setPayment,
+  setAddress,
+  addToCart,
+  toggleCartItemChecked,
+  toggleAllCartItems,
+  updateCartItemCount,
+  removeFromCart,
+  resetShoppingCart,
+} = shoppingCartSlice.actions
 
 export default shoppingCartSlice.reducer

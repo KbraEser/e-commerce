@@ -1,4 +1,3 @@
-import React from 'react'
 import Brands from './Brands'
 
 const AboutComponies = () => {

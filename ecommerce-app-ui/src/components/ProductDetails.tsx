@@ -82,14 +82,14 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
               <button
                 type="button"
-                className="absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center text-2xl text-white"
+                className="absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center text-2xl text-white"
               >
                 &#10094;
               </button>
 
               <button
                 type="button"
-                className="absolute right-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center text-2xl text-white"
+                className="absolute right-4 top-1/2 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center text-2xl text-white"
               >
                 &#10095;
               </button>
@@ -101,7 +101,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                   key={`${img}-${index}`}
                   type="button"
                   onClick={() => setActiveImage(img)}
-                  className={`h-24 w-24 overflow-hidden border-2 transition-all ${
+                  className={`h-24 w-24 cursor-pointer overflow-hidden border-2 transition-all ${
                     activeImage === img ? 'border-secondary' : 'border-transparent opacity-70'
                   }`}
                 >
@@ -143,7 +143,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                   type="button"
                   onClick={() => setSelectedColor(color)}
                   style={{ backgroundColor: color }}
-                  className={`h-8 w-8 rounded-full transition-transform ${
+                  className={`h-8 w-8 cursor-pointer rounded-full transition-transform ${
                     selectedColor === color ? 'scale-110 ring-2 ring-offset-2 ring-gray-400' : ''
                   }`}
                   aria-label={`Select color ${color}`}
@@ -154,14 +154,14 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             <div className="flex flex-wrap items-center gap-3">
               <button
                 type="button"
-                className="flex items-center justify-center rounded-md bg-secondary px-6 py-3.5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#1b8ecc]"
+                className="flex cursor-pointer items-center justify-center rounded-md bg-secondary px-6 py-3.5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#1b8ecc]"
               >
                 Select Options
               </button>
 
               <button
                 type="button"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#E8E8E8] bg-white text-primary shadow-sm transition-colors hover:bg-gray-50"
+                className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#E8E8E8] bg-white text-primary shadow-sm transition-colors hover:bg-gray-50"
               >
                 <Heart className="h-5 w-5" />
               </button>
@@ -169,7 +169,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
               <button
                 type="button"
                 onClick={handleAddToCart}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#E8E8E8] bg-white text-primary shadow-sm transition-colors hover:bg-gray-50"
+                className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#E8E8E8] bg-white text-primary shadow-sm transition-colors hover:bg-gray-50"
                 aria-label="Sepete ekle"
               >
                 <ShoppingCart className="h-5 w-5" />
@@ -177,7 +177,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
               <button
                 type="button"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#E8E8E8] bg-white text-primary shadow-sm transition-colors hover:bg-gray-50"
+                className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#E8E8E8] bg-white text-primary shadow-sm transition-colors hover:bg-gray-50"
               >
                 <Eye className="h-5 w-5" />
               </button>

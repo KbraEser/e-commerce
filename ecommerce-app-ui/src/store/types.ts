@@ -1,5 +1,4 @@
 export interface User {
- 
   name: string
   email: string
   roleId?: number
@@ -15,19 +14,25 @@ export interface Role {
 export interface Address {
   id?: number
   title: string
+  name: string
+  surname: string
+  phone: string
   city: string
   district: string
-  fullAddress: string
-  phone?: string
+  neighborhood: string
 }
 
+export type AddressPayload = Omit<Address, 'id'>
+
 export interface CreditCard {
-  id?: number
-  cardHolder: string
-  cardNumber: string
-  expiryMonth: string
-  expiryYear: string
+  id?: number | string
+  card_no: string
+  expire_month: number
+  expire_year: number
+  name_on_card: string
 }
+
+export type CreditCardPayload = Omit<CreditCard, 'id'>
 
 export interface Category {
   id: number
@@ -42,6 +47,7 @@ export interface ProductImage {
   url: string
   index: number
 }
+
 export interface Product {
   id: number
   name: string
@@ -54,6 +60,7 @@ export interface Product {
   sell_count: number
   images: ProductImage[]
 }
+
 export interface ProductsResponse {
   products: Product[]
   total: number
@@ -72,6 +79,43 @@ export interface Payment {
   cardNumber: string
   expiryMonth: string
   expiryYear: string
+}
+
+export interface OrderProductPayload {
+  product_id: number
+  count: number
+  detail: string
+}
+
+export interface OrderPayload {
+  address_id: number
+  order_date: string
+  card_no: number
+  card_name: string
+  card_expire_month: number
+  card_expire_year: number
+  card_ccv: number
+  price: number
+  products: OrderProductPayload[]
+}
+
+export interface PreviousOrderProduct {
+  product_id: number
+  count: number
+  detail: string
+}
+
+export interface PreviousOrder {
+  id: number
+  address_id: number
+  order_date: string
+  card_no: number
+  card_name: string
+  card_expire_month: number
+  card_expire_year: number
+  card_ccv: number
+  price: number
+  products: PreviousOrderProduct[]
 }
 
 export interface LoginRequest {
@@ -93,4 +137,3 @@ export interface VerifyResponse {
   role_id: string
   token: string
 }
-

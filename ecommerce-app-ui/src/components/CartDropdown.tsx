@@ -37,10 +37,7 @@ const CartDropdown = () => {
         aria-label="Sepet"
       >
         <ShoppingCart className="h-6 w-6" />
-        <span className="hidden font-bold leading-6 md:inline">Sepetim</span>
-        <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-secondary px-1 text-xs font-bold leading-none text-white">
-          {totalCount}
-        </span>
+        <span className="hidden font-light leading-6 md:inline">{totalCount}</span>
       </button>
 
       {open && (
@@ -83,7 +80,7 @@ const CartDropdown = () => {
               <Link
                 to="/checkout"
                 onClick={() => setOpen(false)}
-                className="flex flex-1 items-center justify-center rounded-md bg-secondary px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-[#1b8ecf]"
+                className="relative z-20 flex flex-1 cursor-pointer items-center justify-center rounded-md bg-secondary px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-[#1b8ecf]"
               >
                 Siparişi Tamamla
               </Link>

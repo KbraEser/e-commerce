@@ -2,12 +2,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import ProductsPage from './pages/ShopPage'
 import ProductDetailsPage from './pages/ProductDetailsPage'
+import CartPage from './pages/CartPage'
+import CheckoutPage from './pages/CheckoutPage'
 import ContactPage from './pages/ContactPage'
 import AboutPage from './pages/AboutPage'
 import PostDetailPage from './pages/PostDetailPage'
 import TeamPage from './pages/TeamPage'
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
+import OrdersPage from './pages/OrdersPage'
 import { useEffect } from 'react'
 import { clearAuthToken, setAuthToken } from './service/axios'
 import { verifySession } from './store/thunks/authThunks'
@@ -15,6 +18,7 @@ import { useDispatch } from 'react-redux'
 import type { AppDispatch } from './store'
 import { clearToken, getToken, renewToken } from './service/tokenStorage'
 import { fetchCategories } from './store/thunks/productThunks'
+import ProtectedRoute from './components/auth/ProtectedRoute'
 
 function App() {
   const dispatch = useDispatch<AppDispatch>()
@@ -45,9 +49,7 @@ function App() {
 
     initAuth()
     dispatch(fetchCategories())
-   
   }, [dispatch])
-
 
   return (
     <BrowserRouter>
@@ -58,9 +60,26 @@ function App() {
           path="/shop/:gender/:categoryName/:categoryId"
           element={<ProductsPage />}
         />
-       <Route
+        <Route
           path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId"
           element={<ProductDetailsPage />}
+        />
+        <Route path="/cart" element={<CartPage />} />
+        <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute>
+              <CheckoutPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/orders"
+          element={
+            <ProtectedRoute>
+              <OrdersPage />
+            </ProtectedRoute>
+          }
         />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/about" element={<AboutPage />} />
