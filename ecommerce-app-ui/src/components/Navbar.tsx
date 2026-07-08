@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { IoIosSearch } from 'react-icons/io'
-import { Heart, ShoppingCart } from 'lucide-react'
+import { Heart } from 'lucide-react'
 import { BiMenuAltRight } from 'react-icons/bi'
 import UserNavItem from './UserNavItem'
 import ShopNavDropdown from './ShopNavDropdown'
+import CartDropdown from './CartDropdown'
 
 type NavbarProps = {
   constrained?: boolean
@@ -44,10 +45,7 @@ const Navbar = ({ constrained = false }: NavbarProps) => {
     <IoIosSearch className='w-6 h-6 ' />
     </Link>
 
-    <Link to="/cart" aria-label="Sepet" className='flex items-center px-4 gap-1'>
-    <ShoppingCart className='w-6 h-6' />
-    <span className='hidden md:flex font-light leading-6'>0</span>
-    </Link>
+    <CartDropdown />
 
     <Link to="/wishlist" aria-label="Favoriler" className='hidden md:flex items-center gap-1'>
     <Heart className='w-6 h-6' />

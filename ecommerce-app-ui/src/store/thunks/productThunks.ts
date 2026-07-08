@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getCategories } from '../../service/categoryService'
 import type { Category, Product, ProductsResponse } from '../types'
-import { getProducts } from '../../service/productService'
+import { getProductById, getProducts } from '../../service/productService'
 
 interface FetchCategoriesState {
   product: {
@@ -56,3 +56,8 @@ export const fetchProducts = createAsyncThunk<
   }
   return getProducts(params)
 })
+
+export const fetchProductById = createAsyncThunk<Product, number>(
+  'product/fetchProductById',
+  async (productId) => getProductById(productId)
+)

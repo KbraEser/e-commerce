@@ -63,6 +63,7 @@ export type FetchState = 'NOT_FETCHED' | 'FETCHING' | 'FETCHED' | 'FAILED'
 
 export interface CartItem {
   count: number
+  checked: boolean
   product: Product
 }
 

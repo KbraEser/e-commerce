@@ -14,7 +14,7 @@ import { verifySession } from './store/thunks/authThunks'
 import { useDispatch } from 'react-redux'
 import type { AppDispatch } from './store'
 import { clearToken, getToken, renewToken } from './service/tokenStorage'
-import { fetchCategories, fetchProducts } from './store/thunks/productThunks'
+import { fetchCategories } from './store/thunks/productThunks'
 
 function App() {
   const dispatch = useDispatch<AppDispatch>()
@@ -58,7 +58,10 @@ function App() {
           path="/shop/:gender/:categoryName/:categoryId"
           element={<ProductsPage />}
         />
-        <Route path="/product-details/:id" element={<ProductDetailsPage />} />
+       <Route
+          path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId"
+          element={<ProductDetailsPage />}
+        />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/posts/:id" element={<PostDetailPage />} />
