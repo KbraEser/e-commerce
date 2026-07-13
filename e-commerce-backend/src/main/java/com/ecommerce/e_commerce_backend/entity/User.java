@@ -29,10 +29,14 @@ public class User {
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "role_id")
+    @JoinColumn(name = "role_id",nullable = false)
     private Role role;
 
-    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL )
+    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL, orphanRemoval = true )
     private List<Address> addresses = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL, orphanRemoval = true )
+    private List<CreditCard> creditCards = new ArrayList<>();
+
 
 }
