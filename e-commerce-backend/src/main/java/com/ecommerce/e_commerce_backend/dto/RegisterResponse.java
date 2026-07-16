@@ -1,4 +1,4 @@
-package com.rentacar.dto;
+package com.ecommerce.e_commerce_backend.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

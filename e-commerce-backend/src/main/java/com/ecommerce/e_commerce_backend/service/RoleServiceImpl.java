@@ -27,6 +27,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role findById(Long id) {
+        //todo exception
         return roleRepository.findById(id).orElse(null);
     }
 }
