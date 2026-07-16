@@ -59,8 +59,8 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/register", "/auth/login", "/auth/refresh", "/auth/logout", "/auth/me").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/home/**").permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/home/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/categories/**","/products/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/user/**").authenticated()
                         .requestMatchers("/rentals/**").hasRole("USER")
                         .anyRequest().authenticated()
                 )
