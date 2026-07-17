@@ -1,6 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { type VerifyResponse, type LoginRequest, type LoginResponse } from "../types";
-import { login, verify } from "../../service/authService";
+import {
+  type VerifyResponse,
+  type LoginRequest,
+  type LoginResponse,
+  type RegisterRequest,
+  type RegisterResponse,
+} from "../types";
+import { login, signup, verify } from "../../service/authService";
 
 export const loginUser = createAsyncThunk<LoginResponse, LoginRequest, { rejectValue: string }>(
     'client/loginUser',
@@ -18,6 +24,27 @@ export const loginUser = createAsyncThunk<LoginResponse, LoginRequest, { rejectV
             return rejectWithValue('An unknown error occurred.')
         }
     }
+)
+
+export const registerUser = createAsyncThunk<
+  RegisterResponse,
+  RegisterRequest,
+  { rejectValue: string }
+>(
+  'client/registerUser',
+  async (payload, { rejectWithValue }) => {
+    try {
+      return await signup(payload)
+    } catch (error: unknown) {
+      if (error && typeof error === 'object' && 'response' in error) {
+        const axiosError = error as { response?: { data?: { message?: string } } }
+        return rejectWithValue(
+          axiosError.response?.data?.message ?? 'Registration failed.'
+        )
+      }
+      return rejectWithValue('An unknown error occurred.')
+    }
+  }
 )
 
 export const verifySession = createAsyncThunk<

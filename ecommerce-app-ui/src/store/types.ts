@@ -123,6 +123,23 @@ export interface LoginRequest {
   password: string
 }
 
+export interface RegisterRequest {
+  name: string
+  email: string
+  password: string
+  passwordConfirm: string
+  role_id: number
+  storeName?: string
+  storePhone?: string
+  storeTaxNo?: string
+  storeBankAccount?: string
+}
+
+export interface RegisterResponse {
+  email: string
+  message: string
+}
+
 export interface LoginResponse {
   id: number
   token: string

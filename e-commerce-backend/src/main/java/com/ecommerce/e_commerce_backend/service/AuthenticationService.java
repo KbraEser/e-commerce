@@ -2,8 +2,10 @@ package com.ecommerce.e_commerce_backend.service;
 
 import com.ecommerce.e_commerce_backend.dto.RegisterRequest;
 import com.ecommerce.e_commerce_backend.entity.User;
+import com.ecommerce.e_commerce_backend.exceptions.ApiException;
 import com.ecommerce.e_commerce_backend.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +20,12 @@ public class AuthenticationService {
     }
 
     @Transactional
-    public User register(RegisterRequest registerRequest){
-        if(!registerRequest.password().equals(registerRequest.passwordConfirm())){
-            //todo exception
-            throw new RuntimeException("Passwords do not match");
+    public User register(RegisterRequest registerRequest) {
+        if (!registerRequest.password().equals(registerRequest.passwordConfirm())) {
+            throw new ApiException("Passwords do not match", HttpStatus.BAD_REQUEST);
         }
         userRepository.findByEmail(registerRequest.email()).ifPresent(user -> {
-            throw new RuntimeException("Bu email ile kayıtlı kullanıcı zaten var");
+            throw new ApiException("Bu email ile kayıtlı kullanıcı zaten var", HttpStatus.CONFLICT);
         });
 
         User user = new User();
@@ -34,5 +35,4 @@ public class AuthenticationService {
 
         return userRepository.save(user);
     }
-
 }

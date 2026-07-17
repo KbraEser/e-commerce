@@ -6,7 +6,11 @@ import SelectField from '../components/auth/SelectField'
 import { useDispatch, useSelector } from 'react-redux'
 import type { AppDispatch, RootState } from '../store'
 import { fetchRoles } from '../store/thunks/clientThunks'
+import { registerUser } from '../store/thunks/authThunks'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import type { RegisterRequest } from '../store/types'
 
 
 type SignupFormValues = {
@@ -29,6 +33,7 @@ const IBAN_REGEX = /^TR\d{24}$/i
 
 const SignupPage = () => {
   const dispatch = useDispatch<AppDispatch>()
+  const navigate = useNavigate()
 
   const roles = useSelector((state: RootState) => state.client.roles)
 
@@ -41,7 +46,7 @@ const SignupPage = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<SignupFormValues>({
     defaultValues: {
       role_id: 3,
@@ -55,7 +60,29 @@ const SignupPage = () => {
   const selectedRoleId = watch('role_id')
   const isStoreRole = selectedRoleId === 2
 
-  const onSubmit = () => {}
+  const onSubmit = async (data: SignupFormValues) => {
+    const payload: RegisterRequest = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      passwordConfirm: data.confirmPassword,
+      role_id: data.role_id,
+      ...(isStoreRole && {
+        storeName: data.storeName,
+        storePhone: data.storePhone,
+        storeTaxNo: data.storeTaxNo,
+        storeBankAccount: data.storeBankAccount,
+      }),
+    }
+
+    const result = await dispatch(registerUser(payload))
+    if (registerUser.fulfilled.match(result)) {
+      toast.success(result.payload.message || 'Account created successfully. Please sign in.')
+      navigate('/login')
+    } else {
+      toast.error(result.payload ?? 'Registration failed.')
+    }
+  }
 
   return (
     <AuthLayout
@@ -196,9 +223,10 @@ const SignupPage = () => {
 
         <button
           type="submit"
-          className="mt-1 w-full rounded-lg bg-secondary px-6 py-4 text-sm font-bold text-white shadow-[0_4px_14px_rgba(35,166,240,0.35)] transition-all hover:bg-[#1a85c2] hover:shadow-[0_6px_20px_rgba(35,166,240,0.4)] active:scale-[0.98]"
+          disabled={isSubmitting}
+          className="mt-1 w-full rounded-lg bg-secondary px-6 py-4 text-sm font-bold text-white shadow-[0_4px_14px_rgba(35,166,240,0.35)] transition-all hover:bg-[#1a85c2] hover:shadow-[0_6px_20px_rgba(35,166,240,0.4)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
         >
-          Create Account
+          {isSubmitting ? 'Creating account...' : 'Create Account'}
         </button>
       </form>
     </AuthLayout>

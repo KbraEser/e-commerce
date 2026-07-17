@@ -1,6 +1,7 @@
 package com.ecommerce.e_commerce_backend.config;
 
 
+import com.ecommerce.e_commerce_backend.exceptions.ExceptionResponse;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 import tools.jackson.databind.json.JsonMapper;

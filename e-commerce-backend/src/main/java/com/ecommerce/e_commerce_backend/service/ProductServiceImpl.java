@@ -5,14 +5,15 @@ import com.ecommerce.e_commerce_backend.dto.ProductImageDto;
 import com.ecommerce.e_commerce_backend.dto.ProductsResponse;
 import com.ecommerce.e_commerce_backend.entity.Product;
 import com.ecommerce.e_commerce_backend.entity.ProductImage;
+import com.ecommerce.e_commerce_backend.exceptions.ApiException;
 import com.ecommerce.e_commerce_backend.repository.ProductRepository;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDto getProductById(Long id) {
         Product product = productRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Product not found: " + id));
+                .orElseThrow(() -> new ApiException("Product not found: " + id, HttpStatus.NOT_FOUND));
         return toDto(product);
     }
 
