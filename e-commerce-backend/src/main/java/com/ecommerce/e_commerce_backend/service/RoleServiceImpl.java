@@ -2,7 +2,9 @@ package com.ecommerce.e_commerce_backend.service;
 
 import com.ecommerce.e_commerce_backend.dto.RoleDto;
 import com.ecommerce.e_commerce_backend.entity.Role;
+import com.ecommerce.e_commerce_backend.exceptions.ApiException;
 import com.ecommerce.e_commerce_backend.repository.RoleRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,10 +26,9 @@ public class RoleServiceImpl implements RoleService {
                 .toList();
     }
 
-
     @Override
     public Role findById(Long id) {
-        //todo exception
-        return roleRepository.findById(id).orElse(null);
+        return roleRepository.findById(id)
+                .orElseThrow(() -> new ApiException("Rol bulunamadı: " + id, HttpStatus.NOT_FOUND));
     }
 }
