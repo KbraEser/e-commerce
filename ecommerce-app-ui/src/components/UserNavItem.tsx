@@ -1,7 +1,9 @@
-import { Link, useLocation } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import Gravatar from 'react-gravatar'
-import type { RootState } from '../store'
+import type { AppDispatch, RootState } from '../store'
+import { setUser } from '../store/slice/clientSlice'
+import { logout } from '../service/authService'
 import { ChevronDown, UserCircleIcon } from 'lucide-react'
 
 type UserNavItemProps = {
@@ -10,7 +12,15 @@ type UserNavItemProps = {
 
 const UserNavItem = ({ className = '' }: UserNavItemProps) => {
   const location = useLocation()
+  const navigate = useNavigate()
+  const dispatch = useDispatch<AppDispatch>()
   const user = useSelector((state: RootState) => state.client.user)
+
+  const handleLogout = () => {
+    logout()
+    dispatch(setUser(null))
+    navigate('/login')
+  }
 
   if (user) {
     return (
@@ -34,6 +44,13 @@ const UserNavItem = ({ className = '' }: UserNavItemProps) => {
             >
               Önceki Siparişlerim
             </Link>
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="block w-full cursor-pointer px-4 py-2 text-left text-sm font-medium text-primary transition-colors hover:bg-text-gray"
+            >
+              Çıkış Yap
+            </button>
           </div>
         </details>
       </div>

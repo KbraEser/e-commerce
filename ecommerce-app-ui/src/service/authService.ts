@@ -5,7 +5,10 @@ import type {
   RegisterResponse,
   VerifyResponse,
 } from "../store/types";
-import api from "./axios";
+import api, { clearAuthToken } from "./axios";
+import { clearToken } from "./tokenStorage";
+
+
 
 export const login = async(credentials:LoginRequest): Promise<LoginResponse> => {
     try {
@@ -30,4 +33,11 @@ export const signup = async (payload: RegisterRequest): Promise<RegisterResponse
 export const verify = async(): Promise<VerifyResponse> => {
     const response = await api.get<VerifyResponse>('/verify')
     return response.data
+}
+
+export const logout = async (): Promise<void> => {
+    clearAuthToken()
+    clearToken()
+
+    
 }
