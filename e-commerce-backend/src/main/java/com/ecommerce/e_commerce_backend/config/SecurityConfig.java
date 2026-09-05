@@ -51,17 +51,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> csrf
-                        .spa()
-                        .ignoringRequestMatchers("/auth/login", "/auth/register", "/auth/refresh", "/auth/logout")
-                )
+                .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/register", "/auth/login", "/auth/refresh", "/auth/logout", "/auth/me").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/categories/**","/products/**").permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/user/**").authenticated()
-                        .requestMatchers("/rentals/**").hasRole("USER")
+                        .requestMatchers(
+                                "/signup",
+                                "/login",
+                                "/verify",
+                                "/roles",
+                                "/roles/**"
+                        ).permitAll()
+                        .requestMatchers(HttpMethod.GET, "/categories/**", "/products/**").permitAll()
+                        .requestMatchers("/user/**", "/order", "/order/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(ex -> ex
