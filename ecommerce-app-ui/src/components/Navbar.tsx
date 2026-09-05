@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { IoIosSearch } from 'react-icons/io'
 import { Heart } from 'lucide-react'
 import { BiMenuAltRight } from 'react-icons/bi'
+import type { RootState } from '../store'
 import UserNavItem from './UserNavItem'
 import ShopNavDropdown from './ShopNavDropdown'
 import CartDropdown from './CartDropdown'
@@ -12,6 +14,8 @@ type NavbarProps = {
 
 
 const Navbar = ({ constrained = false }: NavbarProps) => {
+  const favoriteCount = useSelector((state: RootState) => state.favorite.products.length)
+
   return (
     <section className='bg-white my-3 w-full'>
       <div
@@ -49,7 +53,7 @@ const Navbar = ({ constrained = false }: NavbarProps) => {
 
     <Link to="/wishlist" aria-label="Favoriler" className='hidden md:flex items-center gap-1'>
     <Heart className='w-6 h-6' />
-    <span className='font-light leading-6'>0</span>
+    <span className='font-light leading-6'>{favoriteCount}</span>
     </Link>
 
     <Link to="/section" aria-label="Menu" className='flex md:hidden items-center gap-1'>

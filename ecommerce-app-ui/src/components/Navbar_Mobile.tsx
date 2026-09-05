@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { IoIosSearch } from 'react-icons/io'
 import { Heart, ShoppingCart } from 'lucide-react'
 import { BiMenuAltRight } from 'react-icons/bi'
+import type { RootState } from '../store'
 import UserNavItem from './UserNavItem'
 
 type Navbar_MobileProps = {
@@ -33,6 +35,7 @@ const Navbar_Mobile = ({
   const isShop = variant === 'shop'
   const isHome = variant === 'default'
   const hasTopBar = isAbout || isShop || isHome
+  const favoriteCount = useSelector((state: RootState) => state.favorite.products.length)
 
   return (
     <section
@@ -88,7 +91,7 @@ const Navbar_Mobile = ({
             </Link>
             <Link to="/wishlist" aria-label="Favoriler" className="flex items-center gap-1">
               <Heart className="h-6 w-6" />
-              <span className="text-sm font-bold leading-6">1</span>
+              <span className="text-sm font-bold leading-6">{favoriteCount}</span>
             </Link>
           </div>
         )}

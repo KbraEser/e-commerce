@@ -15,12 +15,15 @@ const sortOptions = [
   { label: 'Rating: High to Low', value: 'rating:desc' },
 ]
 
-export default function FilterRow() {
+type FilterRowProps = {
+  viewMode: 'grid' | 'list'
+  onViewModeChange: (mode: 'grid' | 'list') => void
+}
+
+export default function FilterRow({ viewMode, onViewModeChange }: FilterRowProps) {
   const dispatch = useDispatch<AppDispatch>()
   const {total} = useSelector((state: RootState) => state.product)
 
-  
-  const [viewMode, setViewMode] = useState('grid');
   const [filterInput, setFilterInput] = useState('')
   const [sortBy, setSortBy] = useState('');
 
@@ -47,8 +50,8 @@ export default function FilterRow() {
             <span className="text-sm font-bold text-gray-light">Views:</span>
             <div className="flex gap-3">
               <button
-                onClick={() => setViewMode('grid')}
-                className={`p-3 rounded-md border border-light-open-gray transition-all flex items-center justify-center ${
+                onClick={() => onViewModeChange('grid')}
+                className={`cursor-pointer p-3 rounded-md border border-light-open-gray transition-all flex items-center justify-center ${
                   viewMode === 'grid'
                     ? 'border-primary text-primary bg-gray-50'
                     : 'border-gray-light text-primary hover:border-gray-400'
@@ -59,8 +62,8 @@ export default function FilterRow() {
               </button>
 
               <button
-                onClick={() => setViewMode('list')}
-                className={`p-3 rounded-md border border-light-open-gray transition-all flex items-center justify-center ${
+                onClick={() => onViewModeChange('list')}
+                className={`cursor-pointer p-3 rounded-md border border-light-open-gray transition-all flex items-center justify-center ${
                   viewMode === 'list'
                     ? 'border-primary text-primary bg-gray-50'
                     : 'border-gray-light text-primary hover:border-gray-400'
@@ -133,7 +136,7 @@ export default function FilterRow() {
 
 
             <button
-              className="bg-secondary text-white text-sm font-bold px-8 py-3.5 rounded-md hover:bg-[#1b8ecf] transition-colors shadow-sm flex items-center justify-center whitespace-nowrap"
+              className="cursor-pointer bg-secondary text-white text-sm font-bold px-8 py-3.5 rounded-md hover:bg-[#1b8ecf] transition-colors shadow-sm flex items-center justify-center whitespace-nowrap"
               onClick={handleFilterClick}
             >
               Filter

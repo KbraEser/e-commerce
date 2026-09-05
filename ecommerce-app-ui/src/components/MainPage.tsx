@@ -13,7 +13,7 @@ const MainPage = () => {
         <h4 className="max-w-55 md:max-w-70 text-text-gray font-light md:text-left">
           We know how large objects will act, but things on a small scale.
         </h4>
-        <button className="bg-button text-white px-10 py-4 rounded-md">
+        <button className="cursor-pointer bg-button text-white px-10 py-4 rounded-md">
          <span className="text-xl">SHOP NOW</span>
           </button>
         </div>

@@ -31,7 +31,7 @@ const CartDropdown = () => {
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className="flex items-center gap-1 px-4 text-primary transition-colors hover:text-secondary md:text-secondary"
+        className="flex cursor-pointer items-center gap-1 px-4 text-primary transition-colors hover:text-secondary md:text-secondary"
         aria-expanded={open}
         aria-haspopup="true"
         aria-label="Sepet"

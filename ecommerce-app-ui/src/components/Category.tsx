@@ -22,7 +22,7 @@ const Category = () => {
               alt='Men collection'
             />
             <div className='absolute bottom-6 left-6'>
-              <button className='rounded-sm bg-white px-16 py-2 font-bold uppercase'>
+              <button className='cursor-pointer rounded-sm bg-white px-16 py-2 font-bold uppercase'>
                 Men
               </button>
             </div>
@@ -35,7 +35,7 @@ const Category = () => {
               alt='Women collection'
             />
             <div className='absolute bottom-6 left-6'>
-              <button className='rounded-sm bg-white px-10 py-3 font-bold uppercase'>
+              <button className='cursor-pointer rounded-sm bg-white px-10 py-3 font-bold uppercase'>
                 Women
               </button>
             </div>
@@ -49,7 +49,7 @@ const Category = () => {
                 className='h-full w-full object-cover'
               />
               <div className='absolute bottom-6 left-6'>
-                <button className='bg-white px-6 py-3 font-bold uppercase'>
+                <button className='cursor-pointer bg-white px-6 py-3 font-bold uppercase'>
                   Accessories
                 </button>
               </div>
@@ -62,7 +62,7 @@ const Category = () => {
                 className='h-full w-full object-cover'
               />
               <div className='absolute bottom-6 left-6'>
-                <button className='bg-white px-8 py-3 font-bold uppercase'>
+                <button className='cursor-pointer bg-white px-8 py-3 font-bold uppercase'>
                   Kids
                 </button>
               </div>

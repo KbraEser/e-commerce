@@ -55,7 +55,7 @@ const AboutStatsAndMedia = () => {
               <button
                 type="button"
                 aria-label="Play video"
-                className="flex h-[98px] w-[98px] items-center justify-center rounded-full bg-secondary text-white shadow-lg shadow-secondary/30 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#1a85c2]"
+                className="flex h-[98px] w-[98px] cursor-pointer items-center justify-center rounded-full bg-secondary text-white shadow-lg shadow-secondary/30 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#1a85c2]"
               >
                 <FaPlay className="h-8 w-8" />
               </button>

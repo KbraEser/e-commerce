@@ -79,7 +79,7 @@ const AboutHero = () => {
             </p>
             <button
               type="button"
-              className=" rounded-[5px] bg-secondary px-10 py-[15px] text-sm font-bold text-white shadow-md transition-colors hover:bg-[#1a85c2]"
+              className="cursor-pointer rounded-[5px] bg-secondary px-10 py-[15px] text-sm font-bold text-white shadow-md transition-colors hover:bg-[#1a85c2]"
             >
               Get Quote Now
             </button>

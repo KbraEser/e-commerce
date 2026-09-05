@@ -18,7 +18,7 @@ const Contact = () => {
         <p className="text-sm md:text-base text-gray-200 max-w-md leading-relaxed font-light">
           Problems trying to resolve the conflict between the two major realms of Classical physics: Newtonian mechanics
         </p>
-        <button className="bg-[#23a6f0] hover:bg-[#1a8cd0] text-white font-bold text-sm tracking-wide px-10 py-4 rounded-md transition duration-300 shadow-md uppercase">
+        <button className="cursor-pointer bg-[#23a6f0] hover:bg-[#1a8cd0] text-white font-bold text-sm tracking-wide px-10 py-4 rounded-md transition duration-300 shadow-md uppercase">
           Contact Us
         </button>
       </div>

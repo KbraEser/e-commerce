@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Gravatar from 'react-gravatar'
 import type { AppDispatch, RootState } from '../store'
 import { setUser } from '../store/slice/clientSlice'
+import { clearFavorites } from '../store/slice/favoriteSlice'
 import { logout } from '../service/authService'
 import { ChevronDown, UserCircleIcon } from 'lucide-react'
 
@@ -19,6 +20,7 @@ const UserNavItem = ({ className = '' }: UserNavItemProps) => {
   const handleLogout = () => {
     logout()
     dispatch(setUser(null))
+    dispatch(clearFavorites())
     navigate('/login')
   }
 
@@ -43,6 +45,12 @@ const UserNavItem = ({ className = '' }: UserNavItemProps) => {
               className="block cursor-pointer px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-text-gray"
             >
               Önceki Siparişlerim
+            </Link>
+            <Link
+              to="/wishlist"
+              className="block cursor-pointer px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-text-gray"
+            >
+              Beğendiklerim
             </Link>
             <button
               type="button"

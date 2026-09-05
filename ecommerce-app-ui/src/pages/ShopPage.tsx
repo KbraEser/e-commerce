@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CircularProgress } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import FooterComponent from '../layout/Footer'
@@ -23,6 +23,7 @@ const ProductsPage = () => {
   const { productList, fetchState, offset } = useSelector((state: RootState) => state.product)
   const isInitialLoading = fetchState === 'FETCHING' && productList.length === 0
   const prevOffsetRef = useRef<number | null>(null)
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
 
   useEffect(() => {
     dispatch(setCategoryId(parsedCategoryId))
@@ -57,13 +58,13 @@ const ProductsPage = () => {
       />
       <FeaturedCategories />
       <div id="shop-products-top" aria-hidden="true" />
-      <FilterRow />
+      <FilterRow viewMode={viewMode} onViewModeChange={setViewMode} />
       {isInitialLoading ? (
         <div className="flex justify-center bg-white py-20">
           <CircularProgress />
         </div>
       ) : (
-        <ProductCard showHeader={false} products={productList} />
+        <ProductCard showHeader={false} products={productList} viewMode={viewMode} />
       )}
       <Pagination />
       <BrandLogos />

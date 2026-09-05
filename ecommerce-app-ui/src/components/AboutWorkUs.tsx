@@ -24,7 +24,7 @@ const AboutWorkUs = () => {
         </p>
         
 
-        <button className="border border-white hover:bg-white hover:text-secondary font-bold text-sm px-10 py-3.5 rounded-md transition-all duration-200">
+        <button className="cursor-pointer border border-white hover:bg-white hover:text-secondary font-bold text-sm px-10 py-3.5 rounded-md transition-all duration-200">
           Button
         </button>
         </div>

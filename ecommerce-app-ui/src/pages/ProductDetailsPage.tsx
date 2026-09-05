@@ -76,7 +76,7 @@ const ProductDetailsPage = () => {
           <button
             type="button"
             onClick={handleBack}
-            className="rounded-md bg-secondary px-6 py-3 text-sm font-bold text-white"
+            className="cursor-pointer rounded-md bg-secondary px-6 py-3 text-sm font-bold text-white"
           >
             Go Back
           </button>
@@ -88,7 +88,7 @@ const ProductDetailsPage = () => {
               <button
                 type="button"
                 onClick={handleBack}
-                className="text-sm font-bold text-secondary transition-colors hover:text-[#1b8ecc]"
+                className="cursor-pointer text-sm font-bold text-secondary transition-colors hover:text-[#1b8ecc]"
               >
                 ← Back
               </button>

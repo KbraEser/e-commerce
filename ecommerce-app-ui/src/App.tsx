@@ -11,6 +11,7 @@ import TeamPage from './pages/TeamPage'
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import OrdersPage from './pages/OrdersPage'
+import WishlistPage from './pages/WishlistPage'
 import { useEffect } from 'react'
 import { clearAuthToken, setAuthToken } from './service/axios'
 import { verifySession } from './store/thunks/authThunks'
@@ -78,6 +79,14 @@ function App() {
           element={
             <ProtectedRoute>
               <OrdersPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <ProtectedRoute>
+              <WishlistPage />
             </ProtectedRoute>
           }
         />

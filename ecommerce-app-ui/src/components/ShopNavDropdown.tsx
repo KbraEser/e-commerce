@@ -42,7 +42,7 @@ const ShopNavDropdown = () => {
     >
       <button
         type="button"
-        className="flex items-center gap-1 transition-colors hover:text-primary"
+        className="flex cursor-pointer items-center gap-1 transition-colors hover:text-primary"
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
         aria-haspopup="true"

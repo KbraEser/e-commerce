@@ -7,12 +7,17 @@ import {
   type RegisterResponse,
 } from "../types";
 import { login, signup, verify } from "../../service/authService";
+import { setAuthToken } from "../../service/axios";
+import { fetchFavorites } from "./favoriteThunks";
 
 export const loginUser = createAsyncThunk<LoginResponse, LoginRequest, { rejectValue: string }>(
     'client/loginUser',
-    async(credentials, {rejectWithValue}) => {
+    async(credentials, {rejectWithValue, dispatch}) => {
         try{
-            return await login(credentials)
+            const result = await login(credentials)
+            setAuthToken(result.token)
+            dispatch(fetchFavorites())
+            return result
         }
         catch(error:unknown){
             if(error && typeof error === 'object' && 'response' in error){
@@ -53,9 +58,11 @@ export const verifySession = createAsyncThunk<
   { rejectValue: { message: string; unauthorized: boolean } }
 >(
   'client/verifySession',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, dispatch }) => {
     try {
-      return await verify()
+      const result = await verify()
+      dispatch(fetchFavorites())
+      return result
     } catch (error: unknown) {
       if (error && typeof error === 'object' && 'response' in error) {
         const axiosError = error as { response?: { status?: number } }

@@ -84,7 +84,7 @@ const Footer = ({ whiteTopBar = false }: FooterProps) => {
             />
             <button 
               type="submit" 
-              className="whitespace-nowrap rounded-r-md bg-secondary px-5 py-4 text-sm font-medium text-white transition-colors hover:bg-[#1b8ecf]"
+              className="cursor-pointer whitespace-nowrap rounded-r-md bg-secondary px-5 py-4 text-sm font-medium text-white transition-colors hover:bg-[#1b8ecf]"
             >
               Subscribe
             </button>

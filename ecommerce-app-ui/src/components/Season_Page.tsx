@@ -10,8 +10,8 @@ const Season_Page = () => {
       <p className="text-gray-light w-63 font-normal text-xl md:w-96 ">We know how large objects will act, but things on a small scale.</p>
       
       <div className ="py-6 flex flex-col md:flex-row gap-2.5">
-        <button className="bg-secondary md:bg-button text-white px-10 py-4 rounded">BUY NOW</button>
-        <button className="border border-secondary md:border-button text-secondary md:text-button px-10 py-4 rounded">
+        <button className="cursor-pointer bg-secondary md:bg-button text-white px-10 py-4 rounded">BUY NOW</button>
+        <button className="cursor-pointer border border-secondary md:border-button text-secondary md:text-button px-10 py-4 rounded">
           <span className="block md:hidden">Learn More</span>
           <span className="hidden md:block">READ MORE</span>
         </button>
