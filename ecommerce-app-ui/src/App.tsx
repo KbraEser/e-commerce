@@ -11,6 +11,7 @@ import TeamPage from './pages/TeamPage'
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import OrdersPage from './pages/OrdersPage'
+import OrderSuccessPage from './pages/OrderSuccessPage'
 import WishlistPage from './pages/WishlistPage'
 import { useEffect } from 'react'
 import { clearAuthToken, setAuthToken } from './service/axios'
@@ -20,6 +21,7 @@ import type { AppDispatch } from './store'
 import { clearToken, getToken, renewToken } from './service/tokenStorage'
 import { fetchCategories } from './store/thunks/productThunks'
 import ProtectedRoute from './components/auth/ProtectedRoute'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   const dispatch = useDispatch<AppDispatch>()
@@ -54,6 +56,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<ProductsPage />} />
@@ -79,6 +82,14 @@ function App() {
           element={
             <ProtectedRoute>
               <OrdersPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/order-success"
+          element={
+            <ProtectedRoute>
+              <OrderSuccessPage />
             </ProtectedRoute>
           }
         />

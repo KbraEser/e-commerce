@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as yup from 'yup'
 import FooterComponent from '../layout/Footer'
@@ -103,6 +104,7 @@ const getBankLabel = (cardNo: string) => {
 
 const CheckoutPage = () => {
   const dispatch = useDispatch<AppDispatch>()
+  const navigate = useNavigate()
   const cart = useSelector((state: RootState) => state.shoppingCart.cart)
   const { addressList, addressFetchState, creditCards, cardFetchState } = useSelector(
     (state: RootState) => state.client
@@ -252,8 +254,7 @@ const CheckoutPage = () => {
 
     try {
       setIsOrderSubmitting(true)
-      await createOrder(payload)
-      toast.success('Tebrikler! Siparişiniz başarıyla oluşturuldu.')
+      const order = (await createOrder(payload)) as { id?: number | string }
 
       dispatch(resetShoppingCart())
       setActiveStep(1)
@@ -266,6 +267,14 @@ const CheckoutPage = () => {
       setIsCardFormVisible(false)
       setEditingCardId(null)
       setCardFormValues(emptyCardForm)
+
+      navigate('/order-success', {
+        state: {
+          orderId: order?.id,
+          price: payload.price,
+          itemCount: selectedCount,
+        },
+      })
     } catch {
       toast.error('Sipariş oluşturulamadı. Lütfen tekrar deneyiniz.')
     } finally {
@@ -345,11 +354,16 @@ const CheckoutPage = () => {
     }
   }
 
+  const handleSelectCard = (cardId: number | string | null) => {
+    setSelectedCardId(cardId)
+    setCvv('')
+    setCardErrors((prev) => ({ ...prev, cvv: undefined }))
+  }
+
   const resetCardForm = () => {
     setEditingCardId(null)
     setCardFormValues(emptyCardForm)
     setIsCardFormVisible(false)
-    setCvv('')
     setCardErrors({})
   }
 
@@ -497,7 +511,7 @@ const CheckoutPage = () => {
                 cardFetchState={cardFetchState}
                 creditCards={creditCards}
                 selectedCardId={selectedCardId}
-                onSelectCard={setSelectedCardId}
+                onSelectCard={handleSelectCard}
                 onOpenCreateCardForm={openCreateCardForm}
                 onOpenEditCardForm={openEditCardForm}
                 onDeleteCard={handleDeleteCard}

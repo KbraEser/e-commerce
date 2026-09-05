@@ -1,6 +1,8 @@
 import type { Dispatch, FormEvent, SetStateAction } from 'react'
 import type { CreditCard, CreditCardPayload, FetchState } from '../../store/types'
 
+const formatCardNumber = (digits: string) => digits.replace(/(\d{4})(?=\d)/g, '$1 ')
+
 type CardFormErrors = {
   card_no?: string
   expire_month?: string
@@ -115,9 +117,28 @@ const PaymentStepSection = ({
                       </div>
                     </div>
                     <p className="text-sm font-medium text-primary">{maskCardNumber(card.card_no)}</p>
-                    <p className="mt-1 text-right text-xs text-gray-light">
-                      {card.expire_month}/{card.expire_year}
-                    </p>
+                    <div className="mt-1 flex items-center justify-between gap-2">
+                      <p className="text-xs text-gray-light">
+                        {card.expire_month}/{card.expire_year}
+                      </p>
+                      {selectedCardId === card.id && (
+                        <input
+                          type="text"
+                          value={cvv}
+                          onClick={(event) => event.stopPropagation()}
+                          onChange={(event) =>
+                            onCvvChange(event.target.value.replace(/\D/g, '').slice(0, 4))
+                          }
+                          maxLength={4}
+                          placeholder="CVV"
+                          inputMode="numeric"
+                          className="w-16 rounded border border-light-open-gray bg-white px-2 py-1 text-right text-xs text-primary"
+                        />
+                      )}
+                    </div>
+                    {selectedCardId === card.id && cardErrors.cvv && (
+                      <p className="mt-1 text-right text-xs font-medium text-red">{cardErrors.cvv}</p>
+                    )}
                   </div>
                   <div className="mt-2 flex items-center gap-3">
                     <button
@@ -193,7 +214,7 @@ const PaymentStepSection = ({
               <label className="mb-1 block text-sm font-medium text-primary">Kart Numarası</label>
               <input
                 type="text"
-                value={cardFormValues.card_no}
+                value={formatCardNumber(cardFormValues.card_no)}
                 onChange={(event) =>
                   setCardFormValues((prev) => ({
                     ...prev,
@@ -203,6 +224,7 @@ const PaymentStepSection = ({
                 placeholder="____ ____ ____ ____"
                 required
                 inputMode="numeric"
+                maxLength={19}
                 className="w-full rounded-xl border border-light-open-gray bg-white px-4 py-3 text-sm text-primary"
               />
               {cardErrors.card_no && (
