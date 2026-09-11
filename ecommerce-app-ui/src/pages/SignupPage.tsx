@@ -160,7 +160,9 @@ const SignupPage = () => {
 
         <SelectField
           label="Account Type"
-          options={roles.map((role) => ({ value: role.id, label: role.name }))}
+          options={roles
+            .filter((role) => role.code !== 'ADMIN')
+            .map((role) => ({ value: role.id, label: role.name }))}
           error={errors.role_id?.message}
           {...register('role_id', {
             required: 'Please select an account type.',
