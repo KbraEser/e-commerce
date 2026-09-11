@@ -1,9 +1,11 @@
 import { Eye, Heart, ShoppingCart } from 'lucide-react'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import type { AppDispatch } from '../store'
+import type { AppDispatch, RootState } from '../store'
 import { addToCart } from '../store/slice/shoppingCartSlice'
+import { addFavoriteProduct, removeFavoriteProduct } from '../store/thunks/favoriteThunks'
 import type { Product } from '../store/types'
 
 type ProductDetailsProps = {
@@ -53,12 +55,31 @@ const StarRating = ({ rating }: { rating: number }) => {
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
   const dispatch = useDispatch<AppDispatch>()
+  const navigate = useNavigate()
   const colors = ['#23A6F0', '#2DC071', '#E77C40', '#252B42']
   const [selectedColor, setSelectedColor] = useState('#23A6F0')
+
+  const user = useSelector((state: RootState) => state.client.user)
+  const favoriteProducts = useSelector((state: RootState) => state.favorite.products)
+  const isFavorite = favoriteProducts.some((favorite) => favorite.id === product.id)
 
   const handleAddToCart = () => {
     dispatch(addToCart(product))
     toast.success('Ürün sepete eklendi')
+  }
+
+  const handleToggleFavorite = () => {
+    if (!user) {
+      toast.info('Favorilere eklemek için giriş yapmalısınız.')
+      navigate('/login')
+      return
+    }
+
+    if (isFavorite) {
+      dispatch(removeFavoriteProduct(product.id))
+    } else {
+      dispatch(addFavoriteProduct(product.id))
+    }
   }
 
   const images =
@@ -161,9 +182,11 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
               <button
                 type="button"
+                onClick={handleToggleFavorite}
+                aria-label="Favorilere ekle"
                 className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#E8E8E8] bg-white text-primary shadow-sm transition-colors hover:bg-gray-50"
               >
-                <Heart className="h-5 w-5" />
+                <Heart className={`h-5 w-5 ${isFavorite ? 'fill-red text-red' : ''}`} />
               </button>
 
               <button
