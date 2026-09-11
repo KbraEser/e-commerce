@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import type { AppDispatch, RootState } from '../store'
 import { fetchRoles } from '../store/thunks/clientThunks'
 import { registerUser } from '../store/thunks/authThunks'
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import type { RegisterRequest } from '../store/types'
@@ -40,16 +40,16 @@ const SignupPage = () => {
   useEffect(()=>{
     dispatch(fetchRoles())
   },[dispatch])
-  
 
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<SignupFormValues>({
     defaultValues: {
-      role_id: 3,
+      role_id: 0,
       storeName: '',
       storePhone: '',
       storeTaxNo: '',
@@ -58,7 +58,19 @@ const SignupPage = () => {
   })
 
   const selectedRoleId = watch('role_id')
-  const isStoreRole = selectedRoleId === 2
+
+  useEffect(() => {
+    if (selectedRoleId) return
+    const customerRole = roles.find((role) => role.code === 'CUSTOMER')
+    if (customerRole) {
+      setValue('role_id', customerRole.id)
+    }
+  }, [roles, selectedRoleId, setValue])
+
+  const isStoreRole = useMemo(
+    () => roles.find((role) => role.id === selectedRoleId)?.code === 'STORE',
+    [roles, selectedRoleId],
+  )
 
   const onSubmit = async (data: SignupFormValues) => {
     const payload: RegisterRequest = {

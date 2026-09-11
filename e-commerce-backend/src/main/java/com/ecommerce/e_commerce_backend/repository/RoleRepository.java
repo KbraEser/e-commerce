@@ -4,4 +4,5 @@ import com.ecommerce.e_commerce_backend.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoleRepository extends JpaRepository<Role,Long> {
+    boolean existsByCode(String code);
 }
