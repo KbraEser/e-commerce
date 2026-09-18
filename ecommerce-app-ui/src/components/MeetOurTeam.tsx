@@ -13,7 +13,7 @@ export default function MeetOurTeam() {
       id: 2,
       name: 'Kübra Eser',
       profession: 'Full Stack Developer',
-      imgSrc: "/public/profile.jpeg",
+      imgSrc: "/profile.jpeg",
       linkedinUrl: 'https://www.linkedin.com/in/k%C3%BCbra-eser-612851169/',
       githubUrl: 'https://github.com/KbraEser',
     },
