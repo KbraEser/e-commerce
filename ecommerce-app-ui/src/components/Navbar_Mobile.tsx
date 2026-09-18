@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { IoIosSearch } from 'react-icons/io'
 import { Heart, ShoppingCart } from 'lucide-react'
 import { BiMenuAltRight } from 'react-icons/bi'
 import type { RootState } from '../store'
 import UserNavItem from './UserNavItem'
+import SearchBox from './SearchBox'
+import { getCartTotalCount } from '../utils/cartUtils'
 
 type Navbar_MobileProps = {
   className?: string
@@ -17,7 +18,7 @@ const shopNavLinks = [
   { to: '/team', label: 'About', activeStyle: 'font-normal text-gray-light' },
   { to: '/blog', label: 'Blog', activeStyle: 'font-normal text-gray-light' },
   { to: '/contact', label: 'Contact', activeStyle: 'font-bold text-gray-light' },
-  { to: '/pagesS', label: 'Pages', activeStyle: 'font-normal text-gray-light' },
+  { to: '/pages', label: 'Pages', activeStyle: 'font-normal text-gray-light' },
 ]
 
 const homeNavLinks = [
@@ -36,6 +37,8 @@ const Navbar_Mobile = ({
   const isHome = variant === 'default'
   const hasTopBar = isAbout || isShop || isHome
   const favoriteCount = useSelector((state: RootState) => state.favorite.products.length)
+  const cart = useSelector((state: RootState) => state.shoppingCart.cart)
+  const cartCount = getCartTotalCount(cart)
 
   return (
     <section
@@ -50,15 +53,25 @@ const Navbar_Mobile = ({
       >
         {hasTopBar && (
           <div className="mb-14 flex h-[90px] w-full items-center justify-between">
-            <Link to="/" className="text-2xl font-bold tracking-wide text-primary">
+            <Link
+              to="/"
+              className="text-2xl font-bold tracking-wide text-primary transition-colors hover:text-secondary"
+            >
               Bandage
             </Link>
             {isShop ? (
               <BiMenuAltRight className="h-7 w-7 text-primary" aria-label="Menu" />
             ) : (
               <div className="flex items-center gap-5 text-gray-light">
-                <IoIosSearch className="h-7 w-7" />
-                <ShoppingCart className="h-6 w-6" />
+                <SearchBox iconClassName="h-7 w-7" />
+                <Link
+                  to="/cart"
+                  aria-label="Sepet"
+                  className="flex items-center gap-1 transition-colors hover:text-secondary active:text-secondary"
+                >
+                  <ShoppingCart className="h-6 w-6" />
+                  <span className="text-sm font-bold leading-6">{cartCount}</span>
+                </Link>
                 <BiMenuAltRight className="h-7 w-7" />
               </div>
             )}
@@ -68,12 +81,20 @@ const Navbar_Mobile = ({
         <div className="flex w-full flex-col items-center gap-12 py-2 text-3xl font-medium leading-7 text-gray-light">
           {isShop
             ? shopNavLinks.map(({ to, label, activeStyle }) => (
-                <Link key={to} to={to} className={activeStyle}>
+                <Link
+                  key={to}
+                  to={to}
+                  className={`${activeStyle} transition-colors hover:text-secondary active:text-secondary`}
+                >
                   {label}
                 </Link>
               ))
             : homeNavLinks.map(({ to, label }) => (
-                <Link key={to} to={to}>
+                <Link
+                  key={to}
+                  to={to}
+                  className="transition-colors hover:text-secondary active:text-secondary"
+                >
                   {label}
                 </Link>
               ))}
@@ -82,14 +103,16 @@ const Navbar_Mobile = ({
         {isShop && (
           <div className="mt-12 flex w-full flex-col items-center gap-12 text-secondary">
             <UserNavItem className="text-sm font-bold leading-6" />
-            <Link to="/search" aria-label="Ara">
-              <IoIosSearch className="h-6 w-6" />
-            </Link>
+            <SearchBox iconClassName="h-6 w-6" />
             <Link to="/cart" aria-label="Sepet" className="flex items-center gap-1">
               <ShoppingCart className="h-6 w-6" />
-              <span className="text-sm font-bold leading-6">1</span>
+              <span className="text-sm font-bold leading-6">{cartCount}</span>
             </Link>
-            <Link to="/wishlist" aria-label="Favoriler" className="flex items-center gap-1">
+            <Link
+              to="/wishlist"
+              aria-label="Favoriler"
+              className="flex items-center gap-1 transition-colors hover:text-red active:text-red"
+            >
               <Heart className="h-6 w-6" />
               <span className="text-sm font-bold leading-6">{favoriteCount}</span>
             </Link>

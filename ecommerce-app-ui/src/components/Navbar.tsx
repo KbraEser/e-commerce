@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { IoIosSearch } from 'react-icons/io'
 import { Heart } from 'lucide-react'
 import { BiMenuAltRight } from 'react-icons/bi'
 import type { RootState } from '../store'
 import UserNavItem from './UserNavItem'
 import ShopNavDropdown from './ShopNavDropdown'
 import CartDropdown from './CartDropdown'
+import SearchBox from './SearchBox'
 
 type NavbarProps = {
   constrained?: boolean
@@ -36,7 +36,7 @@ const Navbar = ({ constrained = false }: NavbarProps) => {
         <Link to="/team" >About</Link>
         <Link to="/blog" >Blog</Link>
         <Link to="/contact" >Contact</Link>
-        <Link to="/pagesS" >Pages</Link>
+        <Link to="/pages" >Pages</Link>
 
     </div>
 
@@ -45,9 +45,7 @@ const Navbar = ({ constrained = false }: NavbarProps) => {
     <UserNavItem className="hidden md:flex login-register" />
     
 
-    <Link to="/search" aria-label="Ara" >
-    <IoIosSearch className='w-6 h-6 ' />
-    </Link>
+    <SearchBox iconClassName='w-6 h-6' />
 
     <CartDropdown />
 

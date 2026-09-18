@@ -13,6 +13,9 @@ import SignupPage from './pages/SignupPage'
 import OrdersPage from './pages/OrdersPage'
 import OrderSuccessPage from './pages/OrderSuccessPage'
 import WishlistPage from './pages/WishlistPage'
+import UnderConstructionPage from './pages/UnderConstructionPage'
+import NotFoundPage from './pages/NotFoundPage'
+import BlogPage from './pages/BlogPage'
 import { useEffect } from 'react'
 import { clearAuthToken, setAuthToken } from './service/axios'
 import { verifySession } from './store/thunks/authThunks'
@@ -107,6 +110,10 @@ function App() {
         <Route path="/team" element={<TeamPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/pages" element={<UnderConstructionPage title="Pages" />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/pricing" element={<UnderConstructionPage title="Pricing" />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   )
