@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 export default function MeetOurTeam() {
 
@@ -7,19 +7,21 @@ export default function MeetOurTeam() {
       id: 1,
       name: 'Gökhan Özdemir',
       profession: 'Project Manager',
-      imgSrc: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=500', 
+      imgSrc: undefined,
     },
     {
       id: 2,
       name: 'Kübra Eser',
       profession: 'Full Stack Developer',
-      imgSrc: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=500', 
+      imgSrc: "/public/profile.jpeg",
+      linkedinUrl: 'https://www.linkedin.com/in/k%C3%BCbra-eser-612851169/',
+      githubUrl: 'https://github.com/KbraEser',
     },
     {
       id: 3,
       name: 'Username',
       profession: 'Profession',
-      imgSrc: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=500', 
+      imgSrc: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=500',
     },
   ];
 
@@ -45,11 +47,13 @@ export default function MeetOurTeam() {
               className="mx-auto flex w-[330px] max-w-full shrink-0 flex-col overflow-hidden bg-white   hover:shadow-md md:mx-0 md:w-auto md:flex-1"
             >
               <div className="h-[231px] w-full bg-gray-100">
-                <img
-                  src={member.imgSrc}
-                  alt={member.name}
-                  className="h-full w-full object-cover object-center"
-                />
+                {member.imgSrc && (
+                  <img
+                    src={member.imgSrc}
+                    alt={member.name}
+                    className="h-full w-full object-cover object-center"
+                  />
+                )}
               </div>
 
               <div className="flex flex-col items-center p-6 text-center">
@@ -61,13 +65,36 @@ export default function MeetOurTeam() {
                 </p>
 
                 <div className="flex items-center gap-4">
-                  <a
-                    href="#"
-                    className="text-[#1877F2] transition-colors lg:text-secondary lg:hover:text-disabled"
-                    aria-label="Facebook"
-                  >
-                    <FaFacebook />
-                  </a>
+                  {member.linkedinUrl ? (
+                    <a
+                      href={member.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#0A66C2] transition-colors lg:text-secondary lg:hover:text-disabled"
+                      aria-label="LinkedIn"
+                    >
+                      <FaLinkedin />
+                    </a>
+                  ) : (
+                    <a
+                      href="#"
+                      className="text-[#1877F2] transition-colors lg:text-secondary lg:hover:text-disabled"
+                      aria-label="Facebook"
+                    >
+                      <FaFacebook />
+                    </a>
+                  )}
+                  {member.githubUrl && (
+                    <a
+                      href={member.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#181717] transition-colors lg:text-secondary lg:hover:text-disabled"
+                      aria-label="GitHub"
+                    >
+                      <FaGithub />
+                    </a>
+                  )}
                   <a
                     href="#"
                     className="text-[#E4405F] transition-colors lg:text-secondary lg:hover:text-disabled"
