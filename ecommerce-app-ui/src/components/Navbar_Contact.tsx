@@ -31,7 +31,7 @@ const Navbar_Contact = ({
             </div>
             <div className='flex items-center gap-1 px-3'>
                 <Mail className='text-gray-400 w-5' />
-                <h3>michelle.rivera@example.com</h3>
+                <h3>kubrademirbaseser@gmail.com</h3>
             </div>
             </div>
 

@@ -22,21 +22,23 @@ const Post_Page = () => {
             >
               <div className='relative'>
                 <img
-                  className='h-75 object-cover'
+                  className='h-75 w-full object-cover object-top'
                   src={post.imageUrl}
                   alt='Gönderi Görseli'
                 />
-                <span className='absolute left-4 top-4 rounded bg-red px-3 py-1 text-xs font-bold uppercase text-white'>
-                  {post.isNew ? 'Yeni' : ''}
-                </span>
+                {post.isNew && (
+                  <span className='absolute left-4 top-4 rounded bg-red px-3 py-1 text-xs font-bold uppercase text-white'>
+                    Yeni
+                  </span>
+                )}
               </div>
 
               <div className='px-6 mb-5 flex flex-col gap-2.5'>
                 <div className=' flex gap-4 text-xs text-gray-light font-normal'>
                   {post.tags.map((tag) =>
-                    tag === 'Google' ? (
+                    tag === 'Trend' ? (
                       <span key={tag} className='cursor-pointer text-disabled'>
-                        Google
+                        {tag}
                       </span>
                     ) : (
                       <span key={tag} className='cursor-pointer text-gray-light'>
@@ -46,9 +48,11 @@ const Post_Page = () => {
                   )}
                 </div>
 
-                <h3 className='mb-3  cursor-pointer text-xl font-normal text-primary hover:text-secondary'>
-                  {post.title}
-                </h3>
+                <Link to={`/posts/${post.id}`}>
+                  <h3 className='mb-3  cursor-pointer text-xl font-normal text-primary hover:text-secondary'>
+                    {post.title}
+                  </h3>
+                </Link>
 
                 <p className='mb-4 line-clamp-3 text-sm text-gray-light font-normal'>
                   {post.description}

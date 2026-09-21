@@ -23,7 +23,7 @@ const PostDetailPage = () => {
 
           <div className="relative overflow-hidden rounded-lg">
             <img
-              className="h-[420px] w-full object-cover"
+              className="h-[420px] w-full object-cover object-top"
               src={post.imageUrl}
               alt={post.title}
             />
@@ -36,14 +36,14 @@ const PostDetailPage = () => {
 
           <div className="flex flex-wrap gap-4 text-xs font-normal text-gray-light">
             {post.tags.map((tag) => (
-              <span key={tag} className={tag === 'Google' ? 'text-disabled' : ''}>
+              <span key={tag} className={tag === 'Trend' ? 'text-disabled' : ''}>
                 {tag}
               </span>
             ))}
           </div>
 
-          <h1 className="text-3xl font-bold text-primary md:text-4xl">{post.title}</h1>
-          <p className="max-w-3xl text-base font-normal leading-7 text-gray-light">
+          <h1 className="text-center text-3xl font-bold text-primary md:text-4xl">{post.title}</h1>
+          <p className="mx-auto max-w-3xl text-center text-sm font-normal leading-7 text-gray-light">
             {post.description}
           </p>
 

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import mainPageBg from '../img/main-page.jpg'
 
 const MainPage = () => {
@@ -13,9 +14,12 @@ const MainPage = () => {
         <h4 className="max-w-55 md:max-w-70 text-text-gray font-light md:text-left">
           Büyük nesnelerin nasıl davranacağını biliyoruz, ama küçük ölçekteki şeyler farklı.
         </h4>
-        <button className="cursor-pointer bg-button text-white px-10 py-4 rounded-md">
-         <span className="text-xl">ALIŞVERİŞE BAŞLA</span>
-          </button>
+        <Link
+          to="/shop"
+          className="cursor-pointer bg-button text-white px-10 py-4 rounded-md"
+        >
+          <span className="text-xl">ALIŞVERİŞE BAŞLA</span>
+        </Link>
         </div>
       </div>
     </section>
