@@ -61,3 +61,11 @@ export const fetchProductById = createAsyncThunk<Product, number>(
   'product/fetchProductById',
   async (productId) => getProductById(productId)
 )
+
+export const fetchBestSellers = createAsyncThunk<Product[]>(
+  'product/fetchBestSellers',
+  async () => {
+    const response = await getProducts({ sort: 'sellCount:desc', limit: 8 })
+    return response.products
+  }
+)

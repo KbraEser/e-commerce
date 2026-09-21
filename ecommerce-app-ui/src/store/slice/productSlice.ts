@@ -1,6 +1,11 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { Category, FetchState, Product } from '../types'
-import { fetchCategories, fetchProductById, fetchProducts } from '../thunks/productThunks'
+import {
+  fetchBestSellers,
+  fetchCategories,
+  fetchProductById,
+  fetchProducts,
+} from '../thunks/productThunks'
 
 interface ProductState {
   categories: Category[]
@@ -14,6 +19,8 @@ interface ProductState {
   filter: string
   sort: string
   fetchState: FetchState
+  bestSellers: Product[]
+  bestSellersFetchState: FetchState
 }
 
 const initialState: ProductState = {
@@ -28,6 +35,8 @@ const initialState: ProductState = {
   filter: '',
   sort: '',
   fetchState: 'NOT_FETCHED',
+  bestSellers: [],
+  bestSellersFetchState: 'NOT_FETCHED',
 }
 
 const productSlice = createSlice({
@@ -94,6 +103,16 @@ const productSlice = createSlice({
     builder.addCase(fetchProductById.rejected, (state) => {
       state.product = null
       state.productDetailFetchState = 'FAILED'
+    })
+    builder.addCase(fetchBestSellers.pending, (state) => {
+      state.bestSellersFetchState = 'FETCHING'
+    })
+    builder.addCase(fetchBestSellers.fulfilled, (state, action) => {
+      state.bestSellers = action.payload
+      state.bestSellersFetchState = 'FETCHED'
+    })
+    builder.addCase(fetchBestSellers.rejected, (state) => {
+      state.bestSellersFetchState = 'FAILED'
     })
   },
 })

@@ -106,7 +106,14 @@ const ProductCard = ({
           </div>
         )}
 
-        {viewMode === 'list' ? (
+        {products.length === 0 ? (
+          <div className='flex w-full flex-col items-center gap-2 py-16 text-center'>
+            <p className='text-lg font-bold text-primary'>Ürün bulunamadı</p>
+            <p className='text-sm font-normal text-gray-light'>
+              Aradığınız kriterlere uygun ürün bulunamadı, lütfen filtrelerinizi değiştirip tekrar deneyin.
+            </p>
+          </div>
+        ) : viewMode === 'list' ? (
           <div className='mx-auto grid w-full max-w-[1124px] grid-cols-1 gap-4 sm:grid-cols-2'>
             {products.map((product) => {
               const category = findCategoryForProduct(product, categories)

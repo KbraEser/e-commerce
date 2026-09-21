@@ -1,5 +1,5 @@
 import { Mail, Phone } from 'lucide-react'
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
 
 type ContactProps = {
   greenBackground?: boolean
@@ -43,11 +43,33 @@ const Navbar_Contact = ({
             <div className='flex items-center gap-2'>
                 <h3>Bizi Takip Edin : </h3>
                 <div className='flex items-center gap-3 text-xl'>
-                    <FaInstagram />
-                    <FaYoutube />
-                    <FaFacebook />
-                    <FaTwitter />
-                   
+                    <a
+                      href='https://www.linkedin.com/in/k%C3%BCbra-eser-612851169/'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      aria-label='LinkedIn'
+                      className='flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-200 hover:bg-[#0A66C2] hover:text-white'
+                    >
+                      <FaLinkedin />
+                    </a>
+                    <a
+                      href='https://www.youtube.com/@devKubraEser'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      aria-label='YouTube'
+                      className='flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-200 hover:bg-[#FF0000] hover:text-white'
+                    >
+                      <FaYoutube />
+                    </a>
+                    <a
+                      href='https://github.com/KbraEser'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      aria-label='GitHub'
+                      className='flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-200 hover:bg-white hover:text-black'
+                    >
+                      <FaGithub />
+                    </a>
                 </div>
             </div>
 
