@@ -54,15 +54,15 @@ const ProductDetailsPage = () => {
       <Header greenBackground={true} constrained mobileVariant="shop" />
       <Breadcrumb
         items={[
-          { label: 'Home', to: '/' },
-          { label: 'Shop', to: '/shop' },
+          { label: 'Ana Sayfa', to: '/' },
+          { label: 'Mağaza', to: '/shop' },
           ...(categoryName
             ? [{
                 label: categoryName.charAt(0).toUpperCase() + categoryName.slice(1),
                 to: categoryPath,
               }]
             : []),
-          ...(product ? [{ label: product.name }] : [{ label: 'Product Details' }]),
+          ...(product ? [{ label: product.name }] : [{ label: 'Ürün Detayı' }]),
         ]}
       />
 
@@ -72,13 +72,13 @@ const ProductDetailsPage = () => {
         </div>
       ) : productDetailFetchState === 'FAILED' || !product ? (
         <div className="flex flex-col items-center gap-4 bg-text-gray py-24">
-          <p className="text-sm font-bold text-gray-light">Product could not be loaded.</p>
+          <p className="text-sm font-bold text-gray-light">Ürün yüklenemedi.</p>
           <button
             type="button"
             onClick={handleBack}
             className="cursor-pointer rounded-md bg-secondary px-6 py-3 text-sm font-bold text-white"
           >
-            Go Back
+            Geri Dön
           </button>
         </div>
       ) : (
@@ -90,7 +90,7 @@ const ProductDetailsPage = () => {
                 onClick={handleBack}
                 className="cursor-pointer text-sm font-bold text-secondary transition-colors hover:text-[#1b8ecc]"
               >
-                ← Back
+                ← Geri
               </button>
             </div>
           </div>

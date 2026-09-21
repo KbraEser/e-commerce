@@ -36,42 +36,42 @@ const LoginPage = () => {
       saveToken(result.payload.token, data.rememberMe)
       navigate(from, { replace: true })
     } else {
-      toast.error(result.payload ?? 'Login failed.')
+      toast.error(result.payload ?? 'Giriş başarısız oldu.')
     }
   }
 
   return (
     <AuthLayout
       variant="login"
-      title="Sign in"
-      subtitle="Enter your credentials to access your account."
-      footerText="Don't have an account?"
-      footerLinkText="Create one"
+      title="Giriş yap"
+      subtitle="Hesabınıza erişmek için bilgilerinizi girin."
+      footerText="Hesabınız yok mu?"
+      footerLinkText="Hemen oluşturun"
       footerLinkTo="/signup"
     >
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5" noValidate>
         <FormField
-          label="Email Address"
+          label="E-posta Adresi"
           type="email"
-          placeholder="you@example.com"
+          placeholder="siz@ornek.com"
           error={errors.email?.message}
           {...register('email', {
-            required: 'Email is required.',
+            required: 'E-posta zorunludur.',
             pattern: {
               value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: 'Please enter a valid email address.',
+              message: 'Lütfen geçerli bir e-posta adresi girin.',
             },
           })}
         />
 
         <div>
           <FormField
-            label="Password"
+            label="Şifre"
             type="password"
-            placeholder="Enter your password"
+            placeholder="Şifrenizi girin"
             error={errors.password?.message}
             {...register('password', {
-              required: 'Password is required.',
+              required: 'Şifre zorunludur.',
             })}
           />
           <div className="mt-2 text-right">
@@ -79,21 +79,21 @@ const LoginPage = () => {
               to="#"
               className="text-xs font-bold text-secondary transition-colors hover:text-[#1a85c2]"
             >
-              Forgot password?
+              Şifrenizi mi unuttunuz?
             </Link>
           </div>
         </div>
 
         <label className="flex items-center gap-2 text-sm text-gray-light">
   <input type="checkbox" {...register('rememberMe')} />
-  Remember me
+  Beni hatırla
 </label>
 
         <button
           type="submit"
           className="mt-1 w-full rounded-lg bg-secondary px-6 py-4 text-sm font-bold text-white shadow-[0_4px_14px_rgba(35,166,240,0.35)] transition-all hover:bg-[#1a85c2] hover:shadow-[0_6px_20px_rgba(35,166,240,0.4)] active:scale-[0.98] cursor-pointer"
         >
-          Sign In
+          Giriş
         </button>
       </form>
     </AuthLayout>

@@ -8,8 +8,8 @@ type ProductDescriptionTabsProps = {
 export default function ProductDescriptionTabs({ product }: ProductDescriptionTabsProps) {
   const [activeTab, setActiveTab] = useState('additional')
 
-  const listGroup1 = Array(4).fill('the quick fox jumps over the lazy dog')
-  const listGroup2 = Array(3).fill('the quick fox jumps over the lazy dog')
+  const listGroup1 = Array(4).fill('Çevik tilki tembel köpeğin üzerinden atlar')
+  const listGroup2 = Array(3).fill('Çevik tilki tembel köpeğin üzerinden atlar')
 
   return (
     <div className="w-full bg-white py-12">
@@ -24,7 +24,7 @@ export default function ProductDescriptionTabs({ product }: ProductDescriptionTa
                 : 'text-gray-light hover:text-primary'
             }`}
           >
-            Description
+            Açıklama
           </button>
           <button
             type="button"
@@ -35,7 +35,7 @@ export default function ProductDescriptionTabs({ product }: ProductDescriptionTa
                 : 'text-gray-light hover:text-primary'
             }`}
           >
-            Additional Information
+            Ek Bilgiler
           </button>
           <button
             type="button"
@@ -46,7 +46,7 @@ export default function ProductDescriptionTabs({ product }: ProductDescriptionTa
                 : 'text-gray-light hover:text-primary'
             }`}
           >
-            Reviews <span className="text-[#2DC071]">(0)</span>
+            Yorumlar <span className="text-[#2DC071]">(0)</span>
           </button>
         </div>
 
@@ -68,14 +68,12 @@ export default function ProductDescriptionTabs({ product }: ProductDescriptionTa
             <div className="flex flex-col gap-4 text-sm font-normal leading-relaxed text-gray-light">
               <p>{product.description}</p>
               <p>
-                Met minim Mollie non desert Alamo est sit cliquey dolor do met sent.
-                RELIT official consequent door ENIM RELIT Mollie. Excitation venial
-                consequent sent nostrum met.
+                Kaliteli malzemeler ve özenli işçilikle üretilen bu ürün, günlük
+                kullanımda uzun ömürlü ve konforlu bir deneyim sunar.
               </p>
               <p>
-                Met minim Mollie non desert Alamo est sit cliquey dolor do met sent.
-                RELIT official consequent door ENIM RELIT Mollie. Excitation venial
-                consequent sent nostrum met.
+                Kaliteli malzemeler ve özenli işçilikle üretilen bu ürün, günlük
+                kullanımda uzun ömürlü ve konforlu bir deneyim sunar.
               </p>
             </div>
           </div>
@@ -83,7 +81,7 @@ export default function ProductDescriptionTabs({ product }: ProductDescriptionTa
           <div className="flex w-full flex-col gap-6 md:w-[30%]">
             <div className="flex flex-col gap-4">
               <h3 className="text-lg font-bold text-primary">
-                the quick fox jumps over
+                Ek Özellikler
               </h3>
               <div className="flex flex-col gap-3">
                 {listGroup1.map((item, index) => (
@@ -97,7 +95,7 @@ export default function ProductDescriptionTabs({ product }: ProductDescriptionTa
 
             <div className="flex flex-col gap-4">
               <h3 className="text-lg font-bold text-primary">
-                the quick fox jumps over
+                Ek Özellikler
               </h3>
               <div className="flex flex-col gap-3">
                 {listGroup2.map((item, index) => (

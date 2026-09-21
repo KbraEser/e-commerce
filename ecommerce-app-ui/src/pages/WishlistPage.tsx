@@ -22,7 +22,7 @@ const WishlistPage = () => {
       <Breadcrumb
         title="Beğendiklerim"
         items={[
-          { label: 'Home', to: '/' },
+          { label: 'Ana Sayfa', to: '/' },
           { label: 'Beğendiklerim' },
         ]}
       />

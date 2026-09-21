@@ -23,7 +23,7 @@ const Breadcrumb = ({ title, items }: BreadcrumbProps) => {
         {hasTitle && (
           <h1 className="text-2xl font-bold text-primary">{title}</h1>
         )}
-        <nav aria-label="breadcrumb">
+        <nav aria-label="Sayfa yolu">
           <ol className="flex items-center gap-1">
             {items.map((item, index) => (
               <li key={item.label} className="flex items-center gap-1">

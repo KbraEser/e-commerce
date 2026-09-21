@@ -9,10 +9,10 @@ import { setFilter, setOffset, setSort } from '../store/slice/productSlice';
 import { fetchProducts } from '../store/thunks/productThunks';
 
 const sortOptions = [
-  { label: 'Price: Low to High', value: 'price:asc' },
-  { label: 'Price: High to Low', value: 'price:desc' },
-  { label: 'Rating: Low to High', value: 'rating:asc' },
-  { label: 'Rating: High to Low', value: 'rating:desc' },
+  { label: 'Fiyat: Düşükten Yükseğe', value: 'price:asc' },
+  { label: 'Fiyat: Yüksekten Düşüğe', value: 'price:desc' },
+  { label: 'Puan: Düşükten Yükseğe', value: 'rating:asc' },
+  { label: 'Puan: Yüksekten Düşüğe', value: 'rating:desc' },
 ]
 
 type FilterRowProps = {
@@ -43,11 +43,11 @@ export default function FilterRow({ viewMode, onViewModeChange }: FilterRowProps
       <div className="mx-auto mb-2 w-full max-w-[1440px] px-4 py-6 sm:px-6 md:px-12">
         <div className="mx-auto flex w-full max-w-[1060px] flex-col items-center gap-6 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center justify-center text-sm font-bold text-gray-light tracking-wide shrink-0">
-            Showing all {total} results
+            Toplam {total} sonuç gösteriliyor
           </div>
 
           <div className="flex items-center justify-center gap-4 shrink-0">
-            <span className="text-sm font-bold text-gray-light">Views:</span>
+            <span className="text-sm font-bold text-gray-light">Görünüm:</span>
             <div className="flex gap-3">
               <button
                 onClick={() => onViewModeChange('grid')}
@@ -56,7 +56,7 @@ export default function FilterRow({ viewMode, onViewModeChange }: FilterRowProps
                     ? 'border-primary text-primary bg-gray-50'
                     : 'border-gray-light text-primary hover:border-gray-400'
                 }`}
-                aria-label="Grid view"
+                aria-label="Izgara görünümü"
               >
                 <LayoutGrid className="w-4 h-4" />
               </button>
@@ -68,7 +68,7 @@ export default function FilterRow({ viewMode, onViewModeChange }: FilterRowProps
                     ? 'border-primary text-primary bg-gray-50'
                     : 'border-gray-light text-primary hover:border-gray-400'
                 }`}
-                aria-label="List view"
+                aria-label="Liste görünümü"
               >
                 <ListChecks className="w-4 h-4" />
               </button>
@@ -82,7 +82,7 @@ export default function FilterRow({ viewMode, onViewModeChange }: FilterRowProps
                 onChange={handleSortChange}
                 displayEmpty
                 renderValue={(selected) => {
-                  if (!selected) return 'Sort by';
+                  if (!selected) return 'Sırala';
                   return sortOptions.find((option) => option.value === selected)?.label || '';
                 }}
                 sx={{
@@ -127,7 +127,7 @@ export default function FilterRow({ viewMode, onViewModeChange }: FilterRowProps
 
             <input
               type="text"
-              placeholder="Filter products..."
+              placeholder="Ürünlerde ara..."
               value={filterInput}
               onChange={(e) => setFilterInput(e.target.value)}
               className="rounded-md border border-light-open-gray bg-[#F9F9F9] px-4 py-3.5 text-sm text-gray-light outline-none focus:border-primary"
@@ -139,7 +139,7 @@ export default function FilterRow({ viewMode, onViewModeChange }: FilterRowProps
               className="cursor-pointer bg-secondary text-white text-sm font-bold px-8 py-3.5 rounded-md hover:bg-[#1b8ecf] transition-colors shadow-sm flex items-center justify-center whitespace-nowrap"
               onClick={handleFilterClick}
             >
-              Filter
+              Filtrele
             </button>
           </div>
         </div>

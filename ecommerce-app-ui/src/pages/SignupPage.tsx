@@ -89,83 +89,83 @@ const SignupPage = () => {
 
     const result = await dispatch(registerUser(payload))
     if (registerUser.fulfilled.match(result)) {
-      toast.success(result.payload.message || 'Account created successfully. Please sign in.')
+      toast.success(result.payload.message || 'Hesap başarıyla oluşturuldu. Lütfen giriş yapın.')
       navigate('/login')
     } else {
-      toast.error(result.payload ?? 'Registration failed.')
+      toast.error(result.payload ?? 'Kayıt başarısız oldu.')
     }
   }
 
   return (
     <AuthLayout
       variant="signup"
-      title="Create an account"
-      subtitle="Fill in your details below to get started."
-      footerText="Already have an account?"
-      footerLinkText="Sign in"
+      title="Hesap oluşturun"
+      subtitle="Başlamak için aşağıdaki bilgileri doldurun."
+      footerText="Zaten bir hesabınız var mı?"
+      footerLinkText="Giriş yapın"
       footerLinkTo="/login"
     >
       <form onSubmit={handleSubmit(onSubmit)} className="flex min-w-0 flex-col gap-4" noValidate>
         <FormField
-          label="Full Name"
-          placeholder="John Doe"
+          label="Ad Soyad"
+          placeholder="Ahmet Yılmaz"
           error={errors.name?.message}
           {...register('name', {
-            required: 'Name is required.',
-            minLength: { value: 3, message: 'Name must be at least 3 characters.' },
+            required: 'Ad Soyad zorunludur.',
+            minLength: { value: 3, message: 'Ad Soyad en az 3 karakter olmalıdır.' },
           })}
         />
 
         <FormField
-          label="Email Address"
+          label="E-posta Adresi"
           type="email"
-          placeholder="you@example.com"
+          placeholder="siz@ornek.com"
           error={errors.email?.message}
           {...register('email', {
-            required: 'Email is required.',
+            required: 'E-posta zorunludur.',
             pattern: {
               value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: 'Please enter a valid email address.',
+              message: 'Lütfen geçerli bir e-posta adresi girin.',
             },
           })}
         />
 
         <FormField
-          label="Password"
+          label="Şifre"
           type="password"
-          placeholder="Create a strong password"
-          hint="Min. 8 characters with uppercase, lowercase, number & special char."
+          placeholder="Güçlü bir şifre oluşturun"
+          hint="En az 8 karakter, büyük/küçük harf, rakam ve özel karakter içermelidir."
           error={errors.password?.message}
           {...register('password', {
-            required: 'Password is required.',
+            required: 'Şifre zorunludur.',
             pattern: {
               value: PASSWORD_REGEX,
               message:
-                'Password must be 8+ chars with uppercase, lowercase, number and special character.',
+                'Şifre en az 8 karakter, büyük/küçük harf, rakam ve özel karakter içermelidir.',
             },
           })}
         />
 
         <FormField
-          label="Confirm Password"
+          label="Şifre Tekrar"
           type="password"
-          placeholder="Re-enter your password"
+          placeholder="Şifrenizi tekrar girin"
           error={errors.confirmPassword?.message}
           {...register('confirmPassword', {
-            required: 'Please confirm your password.',
+            required: 'Lütfen şifrenizi doğrulayın.',
             validate: (value, formValues) =>
-              value === formValues.password || 'Passwords do not match.',
+              value === formValues.password || 'Şifreler eşleşmiyor.',
           })}
         />
 
         <SelectField
-          label="Account Type"
+          label="Hesap Tipi"
           options={roles
             .filter((role) => role.code !== 'ADMIN')
             .map((role) => ({ value: role.id, label: role.name }))}
           error={errors.role_id?.message}
           {...register('role_id', {
-            required: 'Please select an account type.',
+            required: 'Lütfen bir hesap tipi seçin.',
             valueAsNumber: true,
           })}
         />
@@ -177,39 +177,39 @@ const SignupPage = () => {
                 <Store className="h-4 w-4 text-secondary" />
               </div>
               <div>
-                <p className="text-sm font-bold text-primary">Store Details</p>
+                <p className="text-sm font-bold text-primary">Mağaza Bilgileri</p>
                 <p className="text-xs font-medium text-gray-light">
-                  Required for store accounts
+                  Mağaza hesapları için zorunludur
                 </p>
               </div>
             </div>
 
             <FormField
-              label="Store Name"
-              placeholder="Your store name"
+              label="Mağaza Adı"
+              placeholder="Mağazanızın adı"
               error={errors.storeName?.message}
               {...register('storeName', {
                 validate: (value) =>
                   !isStoreRole ||
                   value.trim().length >= 3 ||
-                  'Store name must be at least 3 characters.',
+                  'Mağaza adı en az 3 karakter olmalıdır.',
               })}
             />
 
             <FormField
-              label="Store Phone"
+              label="Mağaza Telefonu"
               placeholder="+905321234567"
               error={errors.storePhone?.message}
               {...register('storePhone', {
                 validate: (value) =>
                   !isStoreRole ||
                   TURKEY_PHONE_REGEX.test(value.replace(/\s/g, '')) ||
-                  'Please enter a valid Turkish phone number.',
+                  'Lütfen geçerli bir Türkiye telefon numarası girin.',
               })}
             />
 
             <FormField
-              label="Tax ID"
+              label="Vergi Kimlik No"
               placeholder="T1234V567890"
               hint="Format: TXXXXVXXXXXX"
               error={errors.storeTaxNo?.message}
@@ -217,19 +217,19 @@ const SignupPage = () => {
                 validate: (value) =>
                   !isStoreRole ||
                   TAX_NO_REGEX.test(value) ||
-                  'Tax ID must match the pattern TXXXXVXXXXXX.',
+                  'Vergi kimlik numarası TXXXXVXXXXXX formatına uygun olmalıdır.',
               })}
             />
 
             <FormField
-              label="Bank Account (IBAN)"
+              label="Banka Hesabı (IBAN)"
               placeholder="TR330006100519786457841326"
               error={errors.storeBankAccount?.message}
               {...register('storeBankAccount', {
                 validate: (value) =>
                   !isStoreRole ||
                   IBAN_REGEX.test(value.replace(/\s/g, '')) ||
-                  'Please enter a valid Turkish IBAN.',
+                  'Lütfen geçerli bir Türkiye IBAN numarası girin.',
               })}
             />
           </div>
@@ -240,7 +240,7 @@ const SignupPage = () => {
           disabled={isSubmitting}
           className="mt-1 w-full rounded-lg bg-secondary px-6 py-4 text-sm font-bold text-white shadow-[0_4px_14px_rgba(35,166,240,0.35)] transition-all hover:bg-[#1a85c2] hover:shadow-[0_6px_20px_rgba(35,166,240,0.4)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {isSubmitting ? 'Creating account...' : 'Create Account'}
+          {isSubmitting ? 'Hesap oluşturuluyor...' : 'Hesap Oluştur'}
         </button>
       </form>
     </AuthLayout>

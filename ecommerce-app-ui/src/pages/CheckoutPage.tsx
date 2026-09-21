@@ -459,12 +459,12 @@ const CheckoutPage = () => {
     <>
       <Header greenBackground={true} constrained mobileVariant="shop" />
       <Breadcrumb
-        title="Checkout"
+        title="Ödeme"
         items={[
-          { label: 'Home', to: '/' },
-          { label: 'Shop', to: '/shop' },
-          { label: 'Cart', to: '/cart' },
-          { label: 'Checkout' },
+          { label: 'Ana Sayfa', to: '/' },
+          { label: 'Mağaza', to: '/shop' },
+          { label: 'Sepet', to: '/cart' },
+          { label: 'Ödeme' },
         ]}
       />
 

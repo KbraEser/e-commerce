@@ -6,21 +6,21 @@ export default function MeetOurTeam() {
     {
       id: 1,
       name: 'Gökhan Özdemir',
-      profession: 'Project Manager',
+      profession: 'Proje Yöneticisi',
       imgSrc: undefined,
     },
     {
       id: 2,
       name: 'Kübra Eser',
-      profession: 'Full Stack Developer',
+      profession: 'Full Stack Geliştirici',
       imgSrc: "/profile.jpeg",
       linkedinUrl: 'https://www.linkedin.com/in/k%C3%BCbra-eser-612851169/',
       githubUrl: 'https://github.com/KbraEser',
     },
     {
       id: 3,
-      name: 'Username',
-      profession: 'Profession',
+      name: 'Kullanıcı Adı',
+      profession: 'Meslek',
       imgSrc: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=500',
     },
   ];
@@ -32,10 +32,10 @@ export default function MeetOurTeam() {
 
         <div className="mb-16 flex h-[190px] w-[310px] flex-col items-center justify-center text-center md:mb-20 md:h-auto md:w-auto">
           <h2 className="text-5xl  font-bold text-primary tracking-wide mb-4">
-            Meet Our Team
+            Ekibimizle Tanışın
           </h2>
           <p className="text-sm text-gray-light leading-relaxed font-medium">
-            Problems trying to resolve the conflict between the two major realms of Classical physics: Newtonian mechanics
+            Klasik fiziğin iki büyük alanı olan Newton mekaniği arasındaki çelişkiyi çözmeye çalışırken ortaya çıkan sorunlar
           </p>
         </div>
 

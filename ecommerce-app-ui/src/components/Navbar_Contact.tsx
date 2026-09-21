@@ -36,12 +36,12 @@ const Navbar_Contact = ({
             </div>
 
             <div className='flex items-center '>
-                <h3>Follow Us  and get a chance to win 80% off</h3>
+                <h3>Bizi takip edin, %80 indirim kazanın</h3>
 
             </div>
 
             <div className='flex items-center gap-2'>
-                <h3>Follow Us : </h3>
+                <h3>Bizi Takip Edin : </h3>
                 <div className='flex items-center gap-3 text-xl'>
                     <FaInstagram />
                     <FaYoutube />

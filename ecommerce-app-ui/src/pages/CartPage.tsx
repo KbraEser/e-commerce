@@ -35,11 +35,11 @@ const CartPage = () => {
     <>
       <Header greenBackground={true} constrained mobileVariant="shop" />
       <Breadcrumb
-        title="Shopping Cart"
+        title="Alışveriş Sepeti"
         items={[
-          { label: 'Home', to: '/' },
-          { label: 'Shop', to: '/shop' },
-          { label: 'Shopping Cart' },
+          { label: 'Ana Sayfa', to: '/' },
+          { label: 'Mağaza', to: '/shop' },
+          { label: 'Alışveriş Sepeti' },
         ]}
       />
 

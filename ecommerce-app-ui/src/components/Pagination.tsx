@@ -39,7 +39,7 @@ export default function Pagination() {
               : 'bg-white text-secondary hover:bg-gray-50'
           }`}
         >
-          First
+          İlk
         </button>
 
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
@@ -61,7 +61,7 @@ export default function Pagination() {
               : 'bg-white text-secondary hover:bg-gray-50'
           }`}
         >
-          Next
+          Sonraki
         </button>
       </nav>
     </div>

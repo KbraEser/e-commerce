@@ -18,7 +18,7 @@ const AboutHero = () => {
                 to="/"
                 className="text-sm font-semibold text-gray-light transition-colors hover:text-secondary"
               >
-                Home
+                Ana Sayfa
               </Link>
             </li>
             <li>
@@ -26,7 +26,7 @@ const AboutHero = () => {
                 to="/shop"
                 className="text-sm font-semibold text-gray-light transition-colors hover:text-secondary"
               >
-                Product
+                Ürün
               </Link>
             </li>
             <li>
@@ -34,7 +34,7 @@ const AboutHero = () => {
                 to="/team"
                 className="text-sm font-semibold text-gray-light transition-colors hover:text-secondary"
               >
-                Pricing
+                Fiyatlandırma
               </Link>
             </li>
             <li>
@@ -42,7 +42,7 @@ const AboutHero = () => {
                 to="/contact"
                 className="text-sm font-semibold text-gray-light transition-colors hover:text-secondary"
               >
-                Contact
+                İletişim
               </Link>
             </li>
           </ul>
@@ -52,13 +52,13 @@ const AboutHero = () => {
               to="/login"
               className="text-sm font-bold text-secondary transition-colors hover:text-[#1a85c2]"
             >
-              Login
+              Giriş 
             </Link>
             <Link
               to="/signup"
               className="flex items-center gap-3.5 rounded-[5px] bg-secondary px-[25px] py-[15px] text-sm font-bold text-white transition-all hover:bg-[#1a85c2]"
             >
-              Become a member
+              Üye Ol
               <span className="text-base">&rarr;</span>
             </Link>
           </div>
@@ -67,21 +67,21 @@ const AboutHero = () => {
         <main className="relative flex min-h-0 flex-col items-center justify-between px-2 py-10 md:min-h-[calc(100vh-90px)] md:px-0 lg:flex-row">
           <div className="z-10 mt-10 max-w-[500px] flex-1 px-2 text-center lg:mt-0 lg:px-0 lg:text-left">
             <h5 className="py-20 md:py-0 mb-[35px] hidden text-sm font-bold tracking-[0.1px] text-primary md:block">
-              ABOUT COMPANY
+              HAKKIMIZDA
             </h5>
             <h1 className="pb-10 md:pb-0 mb-[35px] text-[40px] font-bold leading-tight text-primary sm:text-[58px] sm:leading-[80px]">
-              ABOUT US
+              HAKKIMIZDA
             </h1>
             <p className="pb-10 md:pb-0 mb-[35px] text-xl font-normal leading-[30px] text-gray-light">
-              We know how large objects will act,
+              Büyük nesnelerin nasıl davranacağını biliyoruz,
               <br className="hidden sm:inline" />
-              but things on a small scale
+              ama küçük ölçekteki şeyler farklı
             </p>
             <button
               type="button"
               className="cursor-pointer rounded-[5px] bg-secondary px-10 py-[15px] text-sm font-bold text-white shadow-md transition-colors hover:bg-[#1a85c2]"
             >
-              Get Quote Now
+              Teklif Al
             </button>
           </div>
 
@@ -109,7 +109,7 @@ const AboutHero = () => {
 
               <img
                 src={aboutHeroImg}
-                alt="Shopping Woman"
+                alt="Alışveriş Yapan Kadın"
                 className="absolute bottom-0 left-1/2 z-10 h-full w-auto max-w-none -translate-x-1/2 select-none md:left-[-13%] md:translate-x-0"
               />
             </div>

@@ -34,7 +34,7 @@ export default function BrandLogos() {
             >
               <img 
                 src={brand.src} 
-                alt={`${brand.name} logo`} 
+                alt={`${brand.name} logosu`}
                 className="max-h-14 max-w-full object-contain transition-all duration-300 hover:opacity-100 " 
               />
             </div>

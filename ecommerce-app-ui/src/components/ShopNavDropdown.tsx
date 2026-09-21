@@ -47,7 +47,7 @@ const ShopNavDropdown = () => {
         aria-expanded={open}
         aria-haspopup="true"
       >
-        Shop
+        Mağaza
         <ChevronDown
           className={`h-4 w-4 transition-transform duration-200 ${
             open ? 'rotate-180' : ''

@@ -51,7 +51,7 @@ const OrdersPage = () => {
       <Breadcrumb
         title="Önceki Siparişlerim"
         items={[
-          { label: 'Home', to: '/' },
+          { label: 'Ana Sayfa', to: '/' },
           { label: 'Önceki Siparişlerim' },
         ]}
       />

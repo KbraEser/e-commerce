@@ -45,7 +45,7 @@ export default function FeaturedCategories() {
                   {category.title}
                 </h3>
                 <p className="text-xs font-medium opacity-90">
-                  Rating: {category.rating}
+                  Puan: {category.rating}
                 </p>
               </div>
             </Link>

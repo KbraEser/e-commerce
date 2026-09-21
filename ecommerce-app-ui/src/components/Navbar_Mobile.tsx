@@ -13,19 +13,19 @@ type Navbar_MobileProps = {
 }
 
 const shopNavLinks = [
-  { to: '/', label: 'Home', activeStyle: 'font-bold text-primary' },
-  { to: '/shop', label: 'Shop', activeStyle: 'font-normal text-gray-light' },
-  { to: '/team', label: 'About', activeStyle: 'font-normal text-gray-light' },
+  { to: '/', label: 'Ana Sayfa', activeStyle: 'font-bold text-primary' },
+  { to: '/shop', label: 'Mağaza', activeStyle: 'font-normal text-gray-light' },
+  { to: '/team', label: 'Hakkımızda', activeStyle: 'font-normal text-gray-light' },
   { to: '/blog', label: 'Blog', activeStyle: 'font-normal text-gray-light' },
-  { to: '/contact', label: 'Contact', activeStyle: 'font-bold text-gray-light' },
-  { to: '/pages', label: 'Pages', activeStyle: 'font-normal text-gray-light' },
+  { to: '/contact', label: 'İletişim', activeStyle: 'font-bold text-gray-light' },
+  { to: '/pages', label: 'Sayfalar', activeStyle: 'font-normal text-gray-light' },
 ]
 
 const homeNavLinks = [
-  { to: '/', label: 'Home' },
-  { to: '/shop', label: 'Product' },
-  { to: '/pricing', label: 'Pricing' },
-  { to: '/contact', label: 'Contact' },
+  { to: '/', label: 'Ana Sayfa' },
+  { to: '/shop', label: 'Ürün' },
+  { to: '/pricing', label: 'Fiyatlandırma' },
+  { to: '/contact', label: 'İletişim' },
 ]
 
 const Navbar_Mobile = ({
@@ -60,7 +60,7 @@ const Navbar_Mobile = ({
               Bandage
             </Link>
             {isShop ? (
-              <BiMenuAltRight className="h-7 w-7 text-primary" aria-label="Menu" />
+              <BiMenuAltRight className="h-7 w-7 text-primary" aria-label="Menü" />
             ) : (
               <div className="flex items-center gap-5 text-gray-light">
                 <SearchBox iconClassName="h-7 w-7" />

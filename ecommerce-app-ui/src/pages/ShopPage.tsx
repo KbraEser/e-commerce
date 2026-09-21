@@ -47,10 +47,10 @@ const ProductsPage = () => {
     <>
       <Header greenBackground={true} constrained mobileVariant="shop" />
       <Breadcrumb
-        title="Shop"
+        title="Mağaza"
         items={[
-          { label: 'Home', to: '/' },
-          { label: 'Shop' },
+          { label: 'Ana Sayfa', to: '/' },
+          { label: 'Mağaza' },
           ...(categoryName
             ? [{ label: categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}] : []
           )

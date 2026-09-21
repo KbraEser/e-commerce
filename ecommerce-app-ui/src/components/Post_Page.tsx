@@ -7,10 +7,10 @@ const Post_Page = () => {
     <section className='w-full bg-white'>
       <div className='mx-auto flex w-full max-w-[1440px] flex-col items-center gap-12 px-4 py-20 sm:px-6 md:px-12'>
         <div className='h-48 w-72 text-center'>
-          <h6 className='pb-2 text-sm font-bold text-secondary'>Practice Advice</h6>
-          <h3 className='pb-3 text-4xl font-bold text-primary'>Featured Products</h3>
+          <h6 className='pb-2 text-sm font-bold text-secondary'>Uygulama Önerisi</h6>
+          <h3 className='pb-3 text-4xl font-bold text-primary'>Öne Çıkan Ürünler</h3>
           <p className='text-sm font-normal text-gray-light'>
-            Problems trying to resolve the conflict between the two major
+            Klasik fiziğin iki büyük alanı arasındaki çelişkiyi çözmeye çalışırken
           </p>
         </div>
 
@@ -24,10 +24,10 @@ const Post_Page = () => {
                 <img
                   className='h-75 object-cover'
                   src={post.imageUrl}
-                  alt='Post Title'
+                  alt='Gönderi Görseli'
                 />
                 <span className='absolute left-4 top-4 rounded bg-red px-3 py-1 text-xs font-bold uppercase text-white'>
-                  {post.isNew ? 'New' : ''}
+                  {post.isNew ? 'Yeni' : ''}
                 </span>
               </div>
 
@@ -61,7 +61,7 @@ const Post_Page = () => {
                   </div>
                   <div className='flex items-center gap-1'>
                   <AreaChart className='h-4 w-4 text-green-background' />
-                    <span className='text-gray-light font-normal'>{post.commentCount} comments</span>
+                    <span className='text-gray-light font-normal'>{post.commentCount} yorum</span>
                   </div>
                 </div>
 
@@ -69,8 +69,8 @@ const Post_Page = () => {
                   to={`/posts/${post.id}`}
                   className='inline-flex items-center gap-1 text-sm font-bold text-gray-light transition-colors hover:text-blue-500'
                 >
-                  Learn More
-                
+                  Devamını Oku
+
                   <ChevronRight className='h-4 w-4 text-secondary' />
                 </Link>
               </div>

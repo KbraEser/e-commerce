@@ -19,7 +19,7 @@ const ContactPage = () => {
       <button
         type="button"
         onClick={handleBack}
-        aria-label="Go back"
+        aria-label="Geri dön"
         className="absolute left-6 top-6 z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/90 text-primary shadow-sm transition-colors hover:bg-white"
       >
         &#8592;

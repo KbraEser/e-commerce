@@ -23,7 +23,7 @@ const OrderSuccessPage = () => {
       <Breadcrumb
         title="Sipariş Alındı"
         items={[
-          { label: 'Home', to: '/' },
+          { label: 'Ana Sayfa', to: '/' },
           { label: 'Sipariş Alındı' },
         ]}
       />

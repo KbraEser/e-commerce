@@ -30,13 +30,13 @@ const Navbar = ({ constrained = false }: NavbarProps) => {
 
     <div className='flex justify-end md:justify-between items-center w-full'>
 
-    <div className='hidden md:flex items-center gap-4 text-gray-light'>
-        <Link to="/" >Home</Link>
+    <div className='hidden md:flex items-center gap-3 whitespace-nowrap text-xs text-gray-light lg:gap-4 lg:text-sm'>
+        <Link to="/" >Ana Sayfa</Link>
         <ShopNavDropdown />
-        <Link to="/team" >About</Link>
+        <Link to="/team" >Hakkımızda</Link>
         <Link to="/blog" >Blog</Link>
-        <Link to="/contact" >Contact</Link>
-        <Link to="/pages" >Pages</Link>
+        <Link to="/contact" >İletişim</Link>
+        <Link to="/pages" >Sayfalar</Link>
 
     </div>
 
@@ -54,7 +54,7 @@ const Navbar = ({ constrained = false }: NavbarProps) => {
     <span className='font-light leading-6'>{favoriteCount}</span>
     </Link>
 
-    <Link to="/section" aria-label="Menu" className='flex md:hidden items-center gap-1'>
+    <Link to="/section" aria-label="Menü" className='flex md:hidden items-center gap-1'>
     <BiMenuAltRight className='w-6 h-6' />
     
     </Link>

@@ -36,33 +36,33 @@ const AuthLayout = ({
 
         <div className="relative z-10 px-12 pb-16">
           <p className="mb-4 text-xs font-bold uppercase tracking-[3px] text-secondary">
-            {variant === 'signup' ? 'Join us' : 'Welcome back'}
+            {variant === 'signup' ? 'Aramıza Katıl' : 'Tekrar Hoş Geldiniz'}
           </p>
           <h2 className="mb-6 text-[42px] font-bold leading-[52px] text-white">
             {variant === 'signup'
-              ? 'Start your journey with us today.'
-              : 'Glad to see you again.'}
+              ? 'Yolculuğunuza bugün bizimle başlayın.'
+              : 'Sizi tekrar görmek güzel.'}
           </h2>
           <p className="max-w-sm text-sm font-medium leading-7 text-white/60">
             {variant === 'signup'
-              ? 'Create an account to shop, sell, or manage your store — all in one place.'
-              : 'Sign in to access your orders, wishlist, and personalized recommendations.'}
+              ? 'Alışveriş yapmak, satış yapmak ya da mağazanızı yönetmek için tek bir yerde hesap oluşturun.'
+              : 'Siparişlerinize, favorilerinize ve size özel önerilere ulaşmak için giriş yapın.'}
           </p>
 
           <div className="mt-12 flex gap-8">
             <div>
               <p className="text-2xl font-bold text-white">10K+</p>
-              <p className="text-xs font-medium text-white/50">Happy customers</p>
+              <p className="text-xs font-medium text-white/50">Mutlu Müşteri</p>
             </div>
             <div className="h-10 w-px bg-white/20" />
             <div>
               <p className="text-2xl font-bold text-white">500+</p>
-              <p className="text-xs font-medium text-white/50">Products</p>
+              <p className="text-xs font-medium text-white/50">Ürün</p>
             </div>
             <div className="h-10 w-px bg-white/20" />
             <div>
               <p className="text-2xl font-bold text-white">4.9</p>
-              <p className="text-xs font-medium text-white/50">Rating</p>
+              <p className="text-xs font-medium text-white/50">Puan</p>
             </div>
           </div>
         </div>
@@ -78,7 +78,7 @@ const AuthLayout = ({
             to="/shop"
             className="ml-auto text-sm font-semibold text-gray-light transition-colors hover:text-secondary"
           >
-            Back to shop
+            Mağazaya dön
           </Link>
         </header>
 
@@ -86,7 +86,7 @@ const AuthLayout = ({
           <div className="mx-auto box-border w-full max-w-[440px]">
             <div className="mb-5">
               <p className="mb-2 text-xs font-bold uppercase tracking-[2px] text-secondary">
-                Account
+                Hesap
               </p>
               <h1 className="mb-2 text-[28px] font-bold leading-tight text-primary md:text-[32px]">
                 {title}

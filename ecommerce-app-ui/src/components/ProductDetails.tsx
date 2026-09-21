@@ -126,7 +126,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                     activeImage === img ? 'border-secondary' : 'border-transparent opacity-70'
                   }`}
                 >
-                  <img src={img} alt="Thumbnail" className="h-19 w-25 object-cover" />
+                  <img src={img} alt="Küçük Resim" className="h-19 w-25 object-cover" />
                 </button>
               ))}
             </div>
@@ -138,16 +138,16 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             <div className="mb-6 flex items-center gap-2">
               <StarRating rating={product.rating} />
               <span className="text-sm font-bold text-gray-light">
-                {product.sell_count} Reviews
+                {product.sell_count} Değerlendirme
               </span>
             </div>
 
             <div className="mb-1 text-2xl font-bold text-primary">₺{product.price}</div>
 
             <div className="mb-8 text-sm font-bold text-gray-light">
-              Availability :{' '}
+              Stok Durumu :{' '}
               <span className="text-secondary">
-                {product.stock > 0 ? 'In Stock' : 'Out of Stock'}
+                {product.stock > 0 ? 'Stokta Var' : 'Stokta Yok'}
               </span>
             </div>
 
@@ -167,7 +167,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                   className={`h-8 w-8 cursor-pointer rounded-full transition-transform ${
                     selectedColor === color ? 'scale-110 ring-2 ring-offset-2 ring-gray-400' : ''
                   }`}
-                  aria-label={`Select color ${color}`}
+                  aria-label={`Rengi seç: ${color}`}
                 />
               ))}
             </div>
@@ -177,7 +177,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                 type="button"
                 className="flex cursor-pointer items-center justify-center rounded-md bg-secondary px-6 py-3.5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#1b8ecc]"
               >
-                Select Options
+                Seçenekleri Gör
               </button>
 
               <button

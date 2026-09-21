@@ -18,7 +18,7 @@ const PostDetailPage = () => {
       <article className="w-full bg-white">
         <div className="mx-auto flex w-full max-w-[1050px] flex-col gap-8 px-6 py-16 md:px-9">
           <Link to="/" className="text-sm font-bold text-secondary">
-            ← Back to Home
+            ← Ana Sayfaya Dön
           </Link>
 
           <div className="relative overflow-hidden rounded-lg">
@@ -29,7 +29,7 @@ const PostDetailPage = () => {
             />
             {post.isNew && (
               <span className="absolute left-4 top-4 rounded bg-red px-3 py-1 text-xs font-bold uppercase text-white">
-                New
+                Yeni
               </span>
             )}
           </div>
@@ -54,7 +54,7 @@ const PostDetailPage = () => {
             </div>
             <div className="flex items-center gap-2">
               <AreaChart className="h-4 w-4 text-green-background" />
-              <span>{post.commentCount} comments</span>
+              <span>{post.commentCount} yorum</span>
             </div>
           </div>
         </div>

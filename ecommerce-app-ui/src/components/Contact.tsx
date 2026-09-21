@@ -13,13 +13,13 @@ const Contact = () => {
       
       <div className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left space-y-6">
         <h1 className="text-4xl md:text-5xl font-black tracking-wider uppercase">
-          Contact Us
+          Bize Ulaşın
         </h1>
         <p className="text-sm md:text-base text-gray-200 max-w-md leading-relaxed font-light">
-          Problems trying to resolve the conflict between the two major realms of Classical physics: Newtonian mechanics
+          Klasik fiziğin iki büyük alanı olan Newton mekaniği arasındaki çelişkiyi çözmeye çalışırken ortaya çıkan sorunlar
         </p>
         <button className="cursor-pointer bg-[#23a6f0] hover:bg-[#1a8cd0] text-white font-bold text-sm tracking-wide px-10 py-4 rounded-md transition duration-300 shadow-md uppercase">
-          Contact Us
+          Bize Ulaşın
         </button>
       </div>
   
@@ -31,8 +31,8 @@ const Contact = () => {
           <div className="w-12 h-[2px] bg-[#23a6f0]"></div>
           <div className="text-xs space-y-2 pt-1 font-medium text-gray-200">
             <p>75000 Paris</p>
-            <p>Phone : +451 215 215</p>
-            <p>Fax : +451 215 215</p>
+            <p>Telefon : +451 215 215</p>
+            <p>Faks : +451 215 215</p>
           </div>
         </div>
   
@@ -43,8 +43,8 @@ const Contact = () => {
           <div className="w-12 h-[2px] bg-[#23a6f0]"></div>
           <div className="text-xs space-y-2 pt-1 font-medium text-gray-200">
             <p>75000 Paris</p>
-            <p>Phone : +451 215 215</p>
-            <p>Fax : +451 215 215</p>
+            <p>Telefon : +451 215 215</p>
+            <p>Faks : +451 215 215</p>
           </div>
         </div>
   
@@ -54,8 +54,8 @@ const Contact = () => {
           <div className="w-12 h-[2px] bg-[#23a6f0]"></div>
           <div className="text-xs space-y-2 pt-1 font-medium text-gray-200">
             <p>75000 Paris</p>
-            <p>Phone : +451 215 215</p>
-            <p>Fax : +451 215 215</p>
+            <p>Telefon : +451 215 215</p>
+            <p>Faks : +451 215 215</p>
           </div>
         </div>
   
@@ -65,8 +65,8 @@ const Contact = () => {
           <div className="w-12 h-[2px] bg-[#23a6f0]"></div>
           <div className="text-xs space-y-2 pt-1 font-medium text-gray-200">
             <p>75000 Paris</p>
-            <p>Phone : +451 215 215</p>
-            <p>Fax : +451 215 215</p>
+            <p>Telefon : +451 215 215</p>
+            <p>Faks : +451 215 215</p>
           </div>
 
         </div>

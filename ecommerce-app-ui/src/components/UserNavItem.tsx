@@ -72,7 +72,7 @@ const UserNavItem = ({ className = '' }: UserNavItemProps) => {
       className={`flex items-center px-5 ${className}`}
     >
       <UserCircleIcon className="mr-1 h-4 w-4" />
-      <span className="text-sm leading-6">Login / Register</span>
+      <span className="whitespace-nowrap text-xs leading-6">Giriş / Kayıt</span>
     </Link>
   )
 }

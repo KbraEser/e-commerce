@@ -88,7 +88,7 @@ const ProductCard = ({
           >
             {!headerTitleOnly && (
               <span className='mb-2 block text-xl font-normal text-gray-light'>
-                Featured Products
+                Öne Çıkan Ürünler
               </span>
             )}
             <h2
@@ -96,11 +96,11 @@ const ProductCard = ({
                 headerTitleOnly ? '' : 'mb-3'
               }`}
             >
-              BESTSELLER PRODUCTS
+              ÇOK SATANLAR
             </h2>
             {!headerTitleOnly && (
               <p className='text-sm font-normal text-gray-light'>
-                Problems trying to resolve the conflict between
+                Klasik fiziğin iki büyük alanı arasındaki çelişkiyi çözmeye çalışırken
               </p>
             )}
           </div>
