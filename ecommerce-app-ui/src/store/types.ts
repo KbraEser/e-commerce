@@ -113,7 +113,7 @@ export interface PreviousOrder {
   card_name: string
   card_expire_month: number
   card_expire_year: number
-  card_ccv: number
+  
   price: number
   products: PreviousOrderProduct[]
 }

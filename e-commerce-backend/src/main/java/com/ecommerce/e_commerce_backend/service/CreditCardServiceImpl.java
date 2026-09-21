@@ -66,7 +66,9 @@ public class CreditCardServiceImpl implements CreditCardService {
     }
 
     private void copyFields(CreditCardDto dto, CreditCard card) {
-        card.setCardNumber(dto.cardNumber());
+        String cardNumber = dto.cardNumber();
+        String lastFour= cardNumber.substring(Math.max(0, cardNumber.length()-4));
+        card.setCardNumber(lastFour);
         card.setExpireMonth(dto.expireMonth());
         card.setExpireYear(dto.expireYear());
         card.setNameOnCard(dto.nameOnCard());

@@ -50,11 +50,13 @@ public class OrderServiceImpl implements OrderService {
         order.setUser(user);
         order.setAddress(address);
         order.setOrderDate(request.orderDate());
-        order.setCardNo(String.valueOf(request.cardNo()));
+        String cardNo =String.valueOf(request.cardNo());
+        String lastFour = cardNo.substring(Math.max(0, cardNo.length()-4));
+        order.setCardNo(lastFour);
         order.setCardName(request.cardName());
         order.setCardExpireMonth(request.cardExpireMonth());
         order.setCardExpireYear(request.cardExpireYear());
-        order.setCardCcv(request.cardCcv());
+
         order.setPrice(request.price());
 
         List<OrderItem> items = new ArrayList<>();
@@ -104,7 +106,6 @@ public class OrderServiceImpl implements OrderService {
                 order.getCardName(),
                 order.getCardExpireMonth(),
                 order.getCardExpireYear(),
-                order.getCardCcv(),
                 order.getPrice(),
                 products
         );

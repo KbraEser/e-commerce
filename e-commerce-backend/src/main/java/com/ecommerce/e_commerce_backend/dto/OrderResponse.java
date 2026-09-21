@@ -13,7 +13,6 @@ public record OrderResponse(
         @JsonProperty("card_name") String cardName,
         @JsonProperty("card_expire_month") Integer cardExpireMonth,
         @JsonProperty("card_expire_year") Integer cardExpireYear,
-        @JsonProperty("card_ccv") Integer cardCcv,
         BigDecimal price,
         List<OrderProductResponse> products
 ) {}

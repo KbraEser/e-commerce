@@ -38,9 +38,6 @@ public class Order {
     @Column(name = "card_expire_year", nullable = false)
     private Integer cardExpireYear;
 
-    @Column(name = "card_ccv", nullable = false)
-    private Integer cardCcv;
-
     @Column(nullable = false)
     private BigDecimal price;
 
